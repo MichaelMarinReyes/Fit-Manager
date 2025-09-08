@@ -1,0 +1,280 @@
+@startuml Fit-Manager
+
+package backend {
+    package dao {
+        class BranchDAO {
+
+        }
+
+        class ClientDAO {
+
+        }
+
+        class EmployeeDAO {
+
+        }
+
+        class PaymentDAO {
+
+        }
+
+        class RoutineDAO {
+
+        }
+
+        class EquipmentDAO {
+
+        }
+    }
+
+    package models {
+        package gym {
+            class Attendance {
+                - id: String
+                - checkInDateTime: Date
+            }
+
+            class Branch {
+                - id: String
+                - name: String
+                - address: String
+                - machineCount: int
+                - employees: List<Employee>
+                - inventory: List<InventoryItem>
+            }
+
+            class Company {
+                - id: String
+                - name: String
+                - branches: List<Branch>
+                - warehouse: WareHouse
+            }
+
+            class Equipment {
+                - id: String
+                - name: String
+                - model: String
+                - equipmentStatus: EquipmentStatus
+                - usageCount: int
+                - needsMaintenance: boolean
+            }
+
+            enum EquipmentStatus {
+                AVAILABLE: String
+                IN_USE: String
+                UNDER_MAINTENANCE: String
+                RESERVED: String
+            }
+
+            class Exercise {
+                - id: String
+                - nameExercise: String
+                - series: int
+                - repetitions: int
+                - estimatedDuration: int
+                - requiredEquipments: List<Equipment>
+            }
+
+            class InventoryItem {
+                - id: String
+                - equipment: Equipment
+                - quantity: int
+            }
+
+            class Membership {
+                - id: String
+                - membershipType: MembershipType
+                - discountPercent: float
+                - startDate: Date
+                - expiryDate: Date
+            }
+
+            enum MembershipType {
+                BASIC: String
+                PREMIUM: String
+                VIP: String
+            }
+
+            class Payment {
+                - paymentId: String
+                - amount: Double
+                - date: Date
+                - paymentType: PaymentType
+                - description: String
+                - planStartDate: Date
+                - planEndDate: Date
+            }
+
+            enum PaymentType {
+                SERVICE_BASIC: String
+                ADDITIONAL: String
+            }
+
+            class Routine {
+                - id: String
+                - name: String
+                - startDate: Date
+                - createdBy: Trainer
+                - exercises: List<Exercise>
+            }
+
+            class Service {
+                - id: String
+                - name: String
+                - description: String
+                - price: Money
+                - serviceType: ServiceType
+            }
+
+            enum ServiceType {
+                CLASS: String
+                PERSONAL_TRAINING: String
+                OTHER: String
+            }
+
+            class Warehouse {
+                - id: String
+                - totalSpareEquipments: int
+                - equipments: List<InventoryItem>
+            }
+        }
+
+        package users {
+            class Administrator {
+                + generateReports(): void
+                + registerEmployees(): void
+            }
+
+            class Client {
+                - contact: String
+                - currentMembership: Membership
+                - assignedTrainer: Trainer
+                - routines: List<Routine>
+                - attendanceHistory: List<Attendance>
+                - paymentHistory: List<Payment>
+            }
+
+            abstract class Employee {
+                - login: String
+                - password: String
+                - role: Role
+            }
+
+            class InventoryManager {
+
+            }
+
+            class Receptionist {
+                + registerClients(): void
+                + assignMemberships(): void
+                + consultReportsClients(): void
+            }
+
+            enum Role {
+                RECEPTIONIST: String
+                TRAINER: String
+                INVENTORY: String
+                ADMIN: String
+            }
+
+            class Trainer {
+                - clients: List<Client>
+                - routinesCreated: List<Routine>
+            }
+
+            class User {
+                - id: String
+                - userName: String
+            }
+        }
+    }
+
+    package services {
+        class BranchService {
+
+        }
+
+        class ClientService {
+
+        }
+
+        class EmployeeService {
+
+        }
+
+        class PaymentService {
+
+        }
+
+        class ReportService {
+            + topFrequentClients(n: int): List<Client>
+            + topSpendingClients(n: int): List<Client>
+            + topTrainersByClients(n: int): List<Trainer>
+            + branchRankingByRevenue(): List<Branch>
+            + equipmentUsageByBranch(branch: Branch): List<Equipment>
+        }
+
+        class RoutineService {
+
+        }
+    }
+
+    package util {
+        class DateUtil {
+
+        }
+
+        class DBConnection {
+
+        }
+
+        class Validator {
+
+        }
+
+    }
+
+    package principal {
+        class Main {
+            + main(String[] args): void
+        }
+    }
+
+    package reports {
+        class Report {
+
+        }
+    }
+}
+
+package frontend {
+
+}
+
+Employee <|-up- User
+Client <|-- User
+Role *-right- User
+Company "1" -- "3" Branch
+Company "1" -- "1" Warehouse
+Branch "1" -- "*" Employee
+Employee <|-- Receptionist
+Employee <|-- Trainer
+Employee <|-- InventoryManager
+Employee <|-- Administrator
+Trainer "1" -- "*" Client : supervises
+Client "1" -- "*" Routine
+Routine "1" -- "*" Exercise
+Exercise "*" -- "*" Equipment : requires
+Client "1" -- "*" Attendance
+Attendance "*" -- "1" Branch
+Client "1" -- "*" Payment
+Client "1" -- "1" Membership
+InventoryItem "*" -- "1" Equipment
+Membership *-- MembershipType
+Equipment *-- EquipmentStatus
+Payment *-- PaymentType
+Client "*" -- "*" Service : contrata
+Payment "*" -- "1" Service : paga
+Membership "*" -- "*" Service : incluye
+Service *-- ServiceType
+@enduml
