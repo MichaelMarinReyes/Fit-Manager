@@ -1,6 +1,6 @@
 package backend.models.gym;
 
-public enum EquipmentStatus {
+public enum ExerciseMachineStatus {
     AVAILABLE("Disponible"),
     IN_USE("En uso"),
     UNDER_MAINTENANCE("Mantenimiento"),
@@ -8,7 +8,7 @@ public enum EquipmentStatus {
 
     private final String equipmentStatus;
 
-    EquipmentStatus(String equipmentStatus) {
+    ExerciseMachineStatus(String equipmentStatus) {
         this.equipmentStatus = equipmentStatus;
     }
 

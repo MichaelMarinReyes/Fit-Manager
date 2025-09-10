@@ -8,5 +8,5 @@ public class Exercise {
     private int series;
     private int repetitions;
     private int estimatedDuration;
-    private List<Equipment> requiredEquipments;
+    private List<ExerciseMachine> requiredEquipments;
 }

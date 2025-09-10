@@ -1,10 +1,10 @@
 package backend.models.gym;
 
-public class Equipment {
+public class ExerciseMachine {
     private String id;
     private String name;
     private String model;
-    private EquipmentStatus equipmentStatus;
+    private ExerciseMachineStatus equipmentStatus;
     private int usageCount;
     private boolean needsMaintenance;
 }
