@@ -9,8 +9,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Client extends User {
@@ -20,6 +23,4 @@ public class Client extends User {
     private List<Routine> routines;
     private List<Attendance> attendanceHistory;
     private List<Payment> paymentHistory;
-
-    public User user = new User();
 }

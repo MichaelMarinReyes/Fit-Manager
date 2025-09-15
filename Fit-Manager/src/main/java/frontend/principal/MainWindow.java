@@ -1,14 +1,25 @@
 package frontend.principal;
 
-import frontend.admin.AdministratorPanel;
-import frontend.inventorymanager.InventoryManagerPanel;
-import frontend.receptionist.ReceptionistPanel;
-import frontend.trainer.TrainerPanel;
+import backend.util.ColorApp;
+import com.formdev.flatlaf.FlatClientProperties;
+import frontend.admin.GeneratedReportPanel;
+import frontend.admin.NewEmployeePanel;
+import frontend.inventorymanager.SendEquipmentPanel;
+import frontend.inventorymanager.RegisterEquipmentPanel;
+import frontend.inventorymanager.ReportEquipmentPanel;
+import frontend.inventorymanager.RequestEquipmentPanel;
+import frontend.receptionist.ClientHistoryPanel;
+import frontend.receptionist.ClientListPanel;
+import frontend.receptionist.NewClientPanel;
+import frontend.trainer.AssingClientPanel;
+import frontend.trainer.RoutineAttendancePanel;
 import java.awt.BorderLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -20,10 +31,10 @@ public class MainWindow extends javax.swing.JFrame {
     public static final String TITTLE = "Fit - Manager";
     private final PanelBackground panelBackground = new PanelBackground();
     private final LoginPanel loginPanel = new LoginPanel();
-    private final AdministratorPanel administratorPanel = new AdministratorPanel();
-    private final InventoryManagerPanel inventoryManagerPanel = new InventoryManagerPanel();
-    private final ReceptionistPanel receptionistPanel = new ReceptionistPanel();
-    private final TrainerPanel trainerPanel = new TrainerPanel();
+    private final GeneratedReportPanel generatedReportPanel = new GeneratedReportPanel();
+    private final SendEquipmentPanel sendEquipmentPanel = new SendEquipmentPanel();
+    private final NewClientPanel receptionistPanel = new NewClientPanel();
+    private final AssingClientPanel assingClientPanel = new AssingClientPanel();
 
     /**
      * Creates new form MainWindow
@@ -31,6 +42,7 @@ public class MainWindow extends javax.swing.JFrame {
     public MainWindow() {
         this.setContentPane(panelBackground);
         initComponents();
+        this.styleMenuBarFlatLaf();
         this.paintPanel(loginPanel);
         this.setIconImage(getIconImage());
         this.setTitle(TITTLE);
@@ -46,148 +58,305 @@ public class MainWindow extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        menuBar = new javax.swing.JPanel();
+        logoutBtn = new javax.swing.JButton();
+        newClientBtn = new javax.swing.JButton();
+        viewClientsBtn = new javax.swing.JButton();
+        clientsHistoryBtn = new javax.swing.JButton();
+        membershipsBtn = new javax.swing.JButton();
+        registerEquipment = new javax.swing.JButton();
+        requestEquipmentBtn = new javax.swing.JButton();
+        sendEquipmentBtn = new javax.swing.JButton();
+        reportEquipmentBtn = new javax.swing.JButton();
+        assingClient = new javax.swing.JButton();
+        routinesAttendanceBtn = new javax.swing.JButton();
+        reportsBtn = new javax.swing.JButton();
+        newEmployeeBtn = new javax.swing.JButton();
         contentPane = new javax.swing.JPanel();
-        menuBar = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        newClientBtn = new javax.swing.JMenuItem();
-        viewClientsBtn = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        logoutBtn = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(600, 500));
+        setMinimumSize(new java.awt.Dimension(800, 650));
+
+        menuBar.setLayout(new java.awt.GridBagLayout());
+
+        logoutBtn.setText("Cerrar Sesión");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(logoutBtn, gridBagConstraints);
+
+        newClientBtn.setText("Registrar Cliente");
+        newClientBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newClientBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(newClientBtn, gridBagConstraints);
+
+        viewClientsBtn.setText("Ver Clientes");
+        viewClientsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewClientsBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(viewClientsBtn, gridBagConstraints);
+
+        clientsHistoryBtn.setText("Historial de Clientes");
+        clientsHistoryBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clientsHistoryBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(clientsHistoryBtn, gridBagConstraints);
+
+        membershipsBtn.setText("Membresías y pagos");
+        membershipsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                membershipsBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(membershipsBtn, gridBagConstraints);
+
+        registerEquipment.setText("Registrar Equipo");
+        registerEquipment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registerEquipmentActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(registerEquipment, gridBagConstraints);
+
+        requestEquipmentBtn.setText("Solicitar Equipo");
+        requestEquipmentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestEquipmentBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(requestEquipmentBtn, gridBagConstraints);
+
+        sendEquipmentBtn.setText("Envíar Equipo");
+        sendEquipmentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sendEquipmentBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(sendEquipmentBtn, gridBagConstraints);
+
+        reportEquipmentBtn.setText("Reportar Equipo");
+        reportEquipmentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportEquipmentBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(reportEquipmentBtn, gridBagConstraints);
+
+        assingClient.setText("Asignar Cliente");
+        assingClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assingClientActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(assingClient, gridBagConstraints);
+
+        routinesAttendanceBtn.setText("Rutinas y Asistencias");
+        routinesAttendanceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                routinesAttendanceBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(routinesAttendanceBtn, gridBagConstraints);
+
+        reportsBtn.setText("Reportes");
+        reportsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportsBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(reportsBtn, gridBagConstraints);
+
+        newEmployeeBtn.setText("Nuevo Empleado");
+        newEmployeeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newEmployeeBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(newEmployeeBtn, gridBagConstraints);
 
         contentPane.setMinimumSize(new java.awt.Dimension(600, 800));
         contentPane.setOpaque(false);
         contentPane.setLayout(new java.awt.BorderLayout());
 
-        menuBar.setBackground(new java.awt.Color(102, 255, 102));
-        menuBar.setForeground(new java.awt.Color(0, 0, 0));
-
-        jMenu2.setBackground(new java.awt.Color(0, 204, 102));
-        jMenu2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenu2.setText("Clientes");
-
-        newClientBtn.setText("Nuevo Cliente");
-        jMenu2.add(newClientBtn);
-
-        viewClientsBtn.setText("Ver Clientes");
-        jMenu2.add(viewClientsBtn);
-
-        menuBar.add(jMenu2);
-
-        jMenu6.setBackground(new java.awt.Color(0, 204, 102));
-        jMenu6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenu6.setText("Inventario");
-
-        jMenuItem10.setText("Gestionar Inventario");
-        jMenu6.add(jMenuItem10);
-
-        menuBar.add(jMenu6);
-
-        jMenu4.setBackground(new java.awt.Color(0, 204, 102));
-        jMenu4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenu4.setText("Empleados");
-
-        jMenuItem3.setText("Administradores");
-        jMenu4.add(jMenuItem3);
-
-        jMenuItem5.setText("Administradores de Inventario");
-        jMenu4.add(jMenuItem5);
-
-        jMenuItem4.setText("Entrenadores");
-        jMenu4.add(jMenuItem4);
-
-        jMenuItem6.setText("Recepcionistas");
-        jMenu4.add(jMenuItem6);
-
-        menuBar.add(jMenu4);
-
-        jMenu5.setBackground(new java.awt.Color(0, 204, 102));
-        jMenu5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenu5.setText("Rutinas");
-
-        jMenuItem8.setText("Ver Rutinas");
-        jMenu5.add(jMenuItem8);
-
-        jMenuItem9.setText("Nueva Rutina");
-        jMenu5.add(jMenuItem9);
-
-        menuBar.add(jMenu5);
-
-        jMenu3.setBackground(new java.awt.Color(0, 204, 102));
-        jMenu3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jMenu3.setText("Sucursales");
-
-        jMenuItem7.setText("Ver Sucursales");
-        jMenu3.add(jMenuItem7);
-
-        menuBar.add(jMenu3);
-
-        logoutBtn.setBackground(new java.awt.Color(0, 204, 102));
-        logoutBtn.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        logoutBtn.setText("Cerrar sesión");
-        logoutBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                logoutBtnMouseClicked(evt);
-            }
-        });
-        menuBar.add(logoutBtn);
-
-        setJMenuBar(menuBar);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1012, Short.MAX_VALUE)
+            .addComponent(menuBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(menuBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contentPane, javax.swing.GroupLayout.PREFERRED_SIZE, 325, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logoutBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutBtnMouseClicked
-        this.menuBar.setVisible(false);
-        loginPanel.setValidLogin(false);
-        paintPanel(loginPanel);
-    }//GEN-LAST:event_logoutBtnMouseClicked
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        int logout = JOptionPane.showConfirmDialog(this, "¿Seguro que desea cerrar sesión?", "¿Cerrar Sesión?", JOptionPane.YES_NO_OPTION);
+        if (logout == 0) {
+            this.setSize(800, 650);
+            this.menuBar.setVisible(false);
+            loginPanel.setValidLogin(false);
+            paintPanel(loginPanel);
+        }
+    }//GEN-LAST:event_logoutBtnActionPerformed
+
+    private void newClientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClientBtnActionPerformed
+        NewClientPanel clientPanel = new NewClientPanel();
+        paintPanel(clientPanel);
+    }//GEN-LAST:event_newClientBtnActionPerformed
+
+    private void viewClientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClientsBtnActionPerformed
+        ClientListPanel clientListPanel = new ClientListPanel();
+        paintPanel(clientListPanel);
+    }//GEN-LAST:event_viewClientsBtnActionPerformed
+
+    private void clientsHistoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientsHistoryBtnActionPerformed
+        ClientHistoryPanel historyPanel = new ClientHistoryPanel();
+        paintPanel(historyPanel);
+    }//GEN-LAST:event_clientsHistoryBtnActionPerformed
+
+    private void membershipsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_membershipsBtnActionPerformed
+        ClientHistoryPanel historyPanel = new ClientHistoryPanel();
+        paintPanel(historyPanel);
+    }//GEN-LAST:event_membershipsBtnActionPerformed
+
+    private void registerEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerEquipmentActionPerformed
+        RegisterEquipmentPanel registerEquipmentPanel = new RegisterEquipmentPanel();
+        paintPanel(registerEquipmentPanel);
+    }//GEN-LAST:event_registerEquipmentActionPerformed
+
+    private void requestEquipmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestEquipmentBtnActionPerformed
+        RequestEquipmentPanel equipmentPanel = new RequestEquipmentPanel();
+        paintPanel(equipmentPanel);
+    }//GEN-LAST:event_requestEquipmentBtnActionPerformed
+
+    private void sendEquipmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendEquipmentBtnActionPerformed
+        paintPanel(sendEquipmentPanel);
+    }//GEN-LAST:event_sendEquipmentBtnActionPerformed
+
+    private void reportEquipmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportEquipmentBtnActionPerformed
+        ReportEquipmentPanel equipmentPanel = new ReportEquipmentPanel();
+        paintPanel(equipmentPanel);
+    }//GEN-LAST:event_reportEquipmentBtnActionPerformed
+
+    private void assingClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assingClientActionPerformed
+        paintPanel(assingClientPanel);
+    }//GEN-LAST:event_assingClientActionPerformed
+
+    private void routinesAttendanceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_routinesAttendanceBtnActionPerformed
+        RoutineAttendancePanel attendancePanel = new RoutineAttendancePanel();
+        paintPanel(attendancePanel);
+    }//GEN-LAST:event_routinesAttendanceBtnActionPerformed
+
+    private void reportsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportsBtnActionPerformed
+        paintPanel(generatedReportPanel);
+    }//GEN-LAST:event_reportsBtnActionPerformed
+
+    private void newEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newEmployeeBtnActionPerformed
+        NewEmployeePanel employeePanel = new NewEmployeePanel();
+        paintPanel(employeePanel);
+    }//GEN-LAST:event_newEmployeeBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton assingClient;
+    private javax.swing.JButton clientsHistoryBtn;
     private javax.swing.JPanel contentPane;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JMenu logoutBtn;
-    private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem newClientBtn;
-    private javax.swing.JMenuItem viewClientsBtn;
+    private javax.swing.JButton logoutBtn;
+    private javax.swing.JButton membershipsBtn;
+    private javax.swing.JPanel menuBar;
+    private javax.swing.JButton newClientBtn;
+    private javax.swing.JButton newEmployeeBtn;
+    private javax.swing.JButton registerEquipment;
+    private javax.swing.JButton reportEquipmentBtn;
+    private javax.swing.JButton reportsBtn;
+    private javax.swing.JButton requestEquipmentBtn;
+    private javax.swing.JButton routinesAttendanceBtn;
+    private javax.swing.JButton sendEquipmentBtn;
+    private javax.swing.JButton viewClientsBtn;
     // End of variables declaration//GEN-END:variables
 
     private void paintPanel(JPanel panel) {
@@ -203,19 +372,126 @@ public class MainWindow extends javax.swing.JFrame {
         loginPanel.addPropertyChangeListener("validLogin", evt -> {
             boolean status = (boolean) evt.getNewValue();
             menuBar.setVisible(status);
-            
+
             if (status) {
+                int width = (int) Toolkit.getDefaultToolkit().getScreenSize().getWidth();
+                int height = (int) Toolkit.getDefaultToolkit().getScreenSize().getHeight();
+                this.setSize(width, height);
                 if (loginPanel.getRol().equalsIgnoreCase("Administrador")) {
-                    paintPanel(administratorPanel);
+                    this.actionsAdmin();
+                    paintPanel(generatedReportPanel);
                 } else if (loginPanel.getRol().equalsIgnoreCase("Inventario")) {
-                    paintPanel(inventoryManagerPanel);
+                    this.actionsInventory();
+                    paintPanel(sendEquipmentPanel);
                 } else if (loginPanel.getRol().equalsIgnoreCase("Entrenador")) {
-                    paintPanel(trainerPanel);
+                    this.actionsTrainer();
+                    paintPanel(assingClientPanel);
                 } else if (loginPanel.getRol().equalsIgnoreCase("Recepcionista")) {
+                    this.actionsReceptionist();
                     paintPanel(receptionistPanel);
                 }
             }
         });
+    }
+
+    private void actionsAdmin() {
+        // Acciones del Recepcionista
+        this.newClientBtn.setVisible(false);
+        this.viewClientsBtn.setVisible(false);
+        this.clientsHistoryBtn.setVisible(false);
+        this.membershipsBtn.setVisible(false);
+        // Acciones de inventario
+        this.registerEquipment.setVisible(false);
+        this.requestEquipmentBtn.setVisible(false);
+        this.sendEquipmentBtn.setVisible(false);
+        this.reportEquipmentBtn.setVisible(false);
+        // Acciones del entrenador
+        this.assingClient.setVisible(false);
+        this.routinesAttendanceBtn.setVisible(false);
+        //Acciones del administrador
+        this.reportsBtn.setVisible(true);
+        this.newEmployeeBtn.setVisible(true);
+    }
+
+    private void actionsInventory() {
+        // Acciones del Recepcionista
+        this.newClientBtn.setVisible(false);
+        this.viewClientsBtn.setVisible(false);
+        this.clientsHistoryBtn.setVisible(false);
+        this.membershipsBtn.setVisible(false);
+        // Acciones de inventario
+        this.registerEquipment.setVisible(true);
+        this.requestEquipmentBtn.setVisible(true);
+        this.sendEquipmentBtn.setVisible(true);
+        this.reportEquipmentBtn.setVisible(true);
+        // Acciones del entrenador
+        this.assingClient.setVisible(false);
+        this.routinesAttendanceBtn.setVisible(false);
+        //Acciones del administrador
+        this.reportsBtn.setVisible(false);
+        this.newEmployeeBtn.setVisible(false);
+    }
+
+    private void actionsTrainer() {
+        // Acciones del Recepcionista
+        this.newClientBtn.setVisible(false);
+        this.viewClientsBtn.setVisible(false);
+        this.clientsHistoryBtn.setVisible(false);
+        this.membershipsBtn.setVisible(false);
+        // Acciones de inventario
+        this.registerEquipment.setVisible(false);
+        this.requestEquipmentBtn.setVisible(false);
+        this.sendEquipmentBtn.setVisible(false);
+        this.reportEquipmentBtn.setVisible(false);
+        // Acciones del entrenador
+        this.assingClient.setVisible(true);
+        this.routinesAttendanceBtn.setVisible(true);
+        //Acciones del administrador
+        this.reportsBtn.setVisible(false);
+        this.newEmployeeBtn.setVisible(false);
+    }
+
+    private void actionsReceptionist() {
+        // Acciones del Recepcionista
+        this.newClientBtn.setVisible(true);
+        this.viewClientsBtn.setVisible(true);
+        this.clientsHistoryBtn.setVisible(true);
+        this.membershipsBtn.setVisible(true);
+        // Acciones de inventario
+        this.registerEquipment.setVisible(false);
+        this.requestEquipmentBtn.setVisible(false);
+        this.sendEquipmentBtn.setVisible(false);
+        this.reportEquipmentBtn.setVisible(false);
+        // Acciones del entrenador
+        this.assingClient.setVisible(false);
+        this.routinesAttendanceBtn.setVisible(false);
+        //Acciones del administrador
+        this.reportsBtn.setVisible(false);
+        this.newEmployeeBtn.setVisible(false);
+    }
+
+    private void styleMenuBarFlatLaf() {
+        // Fondo del menú
+        menuBar.putClientProperty(FlatClientProperties.STYLE, "background: " + ColorApp.GREEN + ";");
+
+        // Estilo común para todos los botones del menú
+        JButton[] buttons = {
+            newClientBtn, viewClientsBtn, clientsHistoryBtn, membershipsBtn,
+            registerEquipment, requestEquipmentBtn, sendEquipmentBtn, reportEquipmentBtn,
+            assingClient, routinesAttendanceBtn, reportsBtn, newEmployeeBtn, logoutBtn
+        };
+
+        for (JButton button : buttons) {
+            button.putClientProperty(FlatClientProperties.BUTTON_TYPE, "roundRect");
+            button.putClientProperty(FlatClientProperties.STYLE, ""
+                    + "arc: 20;"
+                    + "font: bold +14;"
+                    + "background: " + ColorApp.GREEN + ";"
+                    + "foreground: " + ColorApp.WHITE + ";"
+                    + "hoverBackground: " + ColorApp.GREEN_DARK + ";"
+                    + "pressedBackground: " + ColorApp.GREEN_DARKED + ";"
+            );
+        }
     }
 
     class PanelBackground extends JPanel {
@@ -224,14 +500,13 @@ public class MainWindow extends javax.swing.JFrame {
 
         @Override
         public void paint(Graphics g) {
-            image = new ImageIcon(getClass().getResource("/images/imageGym.jpg")).getImage();
+            image = new ImageIcon(getClass().getResource("/images/BigSportgym.jpg")).getImage();
             g.drawImage(image, 0, 0, getWidth(), getHeight(), this);
             setOpaque(false);
             super.paint(g);
         }
     }
 
-    //CAMBIA EL ICONO EN LA BARRA DE TÍTULO Y BARRA DE TAREAS
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/IconGym.png"));

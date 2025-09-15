@@ -1,8 +1,9 @@
 package frontend.principal;
 
+import backend.services.LoginService;
+import backend.util.ColorApp;
+import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +19,7 @@ public class LoginPanel extends javax.swing.JPanel {
      */
     public LoginPanel() {
         initComponents();
-        this.defaulTxt();
+        styleComponents();
         validLogin = false;
     }
 
@@ -72,7 +73,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Hack NFM", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(0, 153, 0));
         jLabel1.setText("Inicio de Sesión");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -84,7 +85,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Hack NFM", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setForeground(new java.awt.Color(0, 153, 0));
         jLabel2.setText("Usuario:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -96,7 +97,7 @@ public class LoginPanel extends javax.swing.JPanel {
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Hack NFM", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(0, 153, 0));
         jLabel3.setText("Contraseña:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -110,7 +111,7 @@ public class LoginPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.ipadx = 200;
+        gridBagConstraints.ipadx = 220;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(41, 19, 0, 0);
@@ -130,7 +131,6 @@ public class LoginPanel extends javax.swing.JPanel {
         loginBtn.setForeground(new java.awt.Color(0, 255, 51));
         loginBtn.setText("Ingresar");
         loginBtn.setBorder(null);
-        loginBtn.setOpaque(true);
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
@@ -145,7 +145,7 @@ public class LoginPanel extends javax.swing.JPanel {
         add(loginBtn, gridBagConstraints);
 
         jLabel4.setFont(new java.awt.Font("Hack NFM", 1, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(0, 153, 0));
         jLabel4.setText("Tipo de empleado:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -158,7 +158,7 @@ public class LoginPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipadx = 24;
+        gridBagConstraints.ipadx = 40;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(34, 20, 0, 0);
@@ -166,18 +166,32 @@ public class LoginPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
-        if (userIdTextField.getText().isEmpty() || passwordField.getText().isBlank() || (userIdTextField.getText().isEmpty() && passwordField.getText().isBlank())) {
-            JOptionPane.showMessageDialog(this, "Hay campos vacíos, llenelos por favor", "Campos necesarios", JOptionPane.INFORMATION_MESSAGE);
+        String username = userIdTextField.getText();
+        char[] pass = passwordField.getPassword();
+        String password = new String(pass);
+        String rol = rolUserCombobox.getSelectedItem().toString();
+
+        if (username.isEmpty() || password.isBlank()) {
+            JOptionPane.showMessageDialog(this, "Hay campos vacíos, llénelos por favor", "Campos necesarios", JOptionPane.INFORMATION_MESSAGE);
             loginBtn.setForeground(Color.red);
             setValidLogin(false);
-        } else {
+            return;
+        }
+
+        LoginService loginService = new LoginService();
+
+        if (loginService.login(username, password, rol)) {
+
             setValidLogin(true);
             validLogin = true;
-            System.out.println("Ingresado");
-            userIdTextField.setText("");
-            passwordField.setText("");
-            rolUserCombobox.setSelectedIndex(0);
+        } else {
+            setValidLogin(false);
+            JOptionPane.showMessageDialog(this, "Credenciales inválidas", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
+        userIdTextField.setText("");
+        passwordField.setText("");
+        rolUserCombobox.setSelectedIndex(0);
     }//GEN-LAST:event_loginBtnActionPerformed
 
 
@@ -192,12 +206,46 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JTextField userIdTextField;
     // End of variables declaration//GEN-END:variables
 
-    private void defaulTxt() {
-        userIdTextField.setPreferredSize(new Dimension(60, 20));
-        userIdTextField.setMinimumSize(new Dimension(60, 20));
-        userIdTextField.setMaximumSize(new Dimension(60, 20));
-        passwordField.setPreferredSize(new Dimension(60, 20));
-        passwordField.setMinimumSize(new Dimension(60, 20));
-        passwordField.setMaximumSize(new Dimension(60, 20));
+    /**
+     * Sirve para dar formato de colores y diseño a los componentes
+     */
+    private void styleComponents() {
+        userIdTextField.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Usuario");
+        userIdTextField.putClientProperty(FlatClientProperties.STYLE, ""
+                + "arc: 15;"
+                + "focusWidth: 2;"
+                + "focusColor: " + ColorApp.GREEN + ";"
+                + "margin: 5,10,5,10;"
+                + "font: 14;"
+        );
+
+        passwordField.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Contraseña");
+        passwordField.putClientProperty(FlatClientProperties.STYLE, ""
+                + "arc: 15;"
+                + "focusWidth: 2;"
+                + "focusColor: " + ColorApp.GREEN + ";"
+                + "showRevealButton: true;"
+                + "margin: 5,10,5,10;"
+                + "font: 14;"
+        );
+
+        rolUserCombobox.putClientProperty(FlatClientProperties.STYLE, ""
+                + "arc: 15;"
+                + "focusWidth: 2;"
+                + "focusColor: " + ColorApp.GREEN + ";"
+                + "padding: 5,10,5,10;"
+                + "font: 14;"
+        );
+
+        loginBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, "roundRect");
+        loginBtn.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font: bold +16;"
+                + "arc: 20;"
+                + "focusWidth: 2;"
+                + "background: " + ColorApp.GREEN + ";"
+                + "foreground: " + ColorApp.WHITE + ";"
+                + "hoverBackground: " + ColorApp.GREEN_DARK + ";"
+                + "pressedBackground: " + ColorApp.GREEN_DARKED + ";"
+        );
     }
 }

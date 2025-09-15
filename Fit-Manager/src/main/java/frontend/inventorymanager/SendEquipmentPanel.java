@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package frontend.trainer;
+package frontend.inventorymanager;
 
 /**
  *
  * @author michael
  */
-public class TrainerPanel extends javax.swing.JPanel {
+public class SendEquipmentPanel extends javax.swing.JPanel {
 
     /**
-     * Creates new form TrainerPanel
+     * Creates new form InventoryManagerPanel
      */
-    public TrainerPanel() {
+    public SendEquipmentPanel() {
         initComponents();
     }
 
@@ -28,25 +28,25 @@ public class TrainerPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(0, 255, 102));
+        setBackground(new java.awt.Color(255, 0, 102));
 
-        jLabel1.setText("ENTRENADOR");
+        jLabel1.setText("INVENTARIO");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(122, 122, 122)
+                .addGap(152, 152, 152)
                 .addComponent(jLabel1)
-                .addContainerGap(192, Short.MAX_VALUE))
+                .addContainerGap(173, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(116, 116, 116)
+                .addGap(117, 117, 117)
                 .addComponent(jLabel1)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addContainerGap(167, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
