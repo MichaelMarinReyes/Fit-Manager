@@ -8,6 +8,7 @@ import frontend.inventorymanager.SendEquipmentPanel;
 import frontend.inventorymanager.RegisterEquipmentPanel;
 import frontend.inventorymanager.ReportEquipmentPanel;
 import frontend.inventorymanager.RequestEquipmentPanel;
+import frontend.receptionist.AssistanceClientPanel;
 import frontend.receptionist.ClientHistoryPanel;
 import frontend.receptionist.ClientListPanel;
 import frontend.receptionist.NewClientPanel;
@@ -74,6 +75,8 @@ public class MainWindow extends javax.swing.JFrame {
         routinesAttendanceBtn = new javax.swing.JButton();
         reportsBtn = new javax.swing.JButton();
         newEmployeeBtn = new javax.swing.JButton();
+        assistanceClient = new javax.swing.JButton();
+        newRoutine = new javax.swing.JButton();
         contentPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,7 +91,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 12;
+        gridBagConstraints.gridx = 14;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -101,7 +104,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -114,7 +117,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -127,7 +130,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -140,7 +143,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -153,7 +156,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -166,7 +169,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -179,7 +182,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 7;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -192,7 +195,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 7;
+        gridBagConstraints.gridx = 8;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -205,20 +208,20 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 8;
+        gridBagConstraints.gridx = 9;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
         menuBar.add(assingClient, gridBagConstraints);
 
-        routinesAttendanceBtn.setText("Rutinas y Asistencias");
+        routinesAttendanceBtn.setText("Rutinas");
         routinesAttendanceBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 routinesAttendanceBtnActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 9;
+        gridBagConstraints.gridx = 10;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -231,7 +234,7 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 10;
+        gridBagConstraints.gridx = 12;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
@@ -244,11 +247,32 @@ public class MainWindow extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridx = 13;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
         menuBar.add(newEmployeeBtn, gridBagConstraints);
+
+        assistanceClient.setText("Asistencias");
+        assistanceClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                assistanceClientActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(assistanceClient, gridBagConstraints);
+
+        newRoutine.setText("Crear Rutina");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 11;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
+        menuBar.add(newRoutine, gridBagConstraints);
 
         contentPane.setMinimumSize(new java.awt.Dimension(600, 800));
         contentPane.setOpaque(false);
@@ -266,7 +290,7 @@ public class MainWindow extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(menuBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contentPane, javax.swing.GroupLayout.PREFERRED_SIZE, 325, Short.MAX_VALUE)
+                .addComponent(contentPane, javax.swing.GroupLayout.PREFERRED_SIZE, 365, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -340,9 +364,15 @@ public class MainWindow extends javax.swing.JFrame {
         paintPanel(employeePanel);
     }//GEN-LAST:event_newEmployeeBtnActionPerformed
 
+    private void assistanceClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assistanceClientActionPerformed
+        AssistanceClientPanel assistanceClientPanel = new AssistanceClientPanel();
+        paintPanel(assistanceClientPanel);
+    }//GEN-LAST:event_assistanceClientActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assingClient;
+    private javax.swing.JButton assistanceClient;
     private javax.swing.JButton clientsHistoryBtn;
     private javax.swing.JPanel contentPane;
     private javax.swing.JButton logoutBtn;
@@ -350,6 +380,7 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JPanel menuBar;
     private javax.swing.JButton newClientBtn;
     private javax.swing.JButton newEmployeeBtn;
+    private javax.swing.JButton newRoutine;
     private javax.swing.JButton registerEquipment;
     private javax.swing.JButton reportEquipmentBtn;
     private javax.swing.JButton reportsBtn;
@@ -380,7 +411,7 @@ public class MainWindow extends javax.swing.JFrame {
                 if (loginPanel.getRol().equalsIgnoreCase("Administrador")) {
                     this.actionsAdmin();
                     paintPanel(generatedReportPanel);
-                } else if (loginPanel.getRol().equalsIgnoreCase("Inventario")) {
+                } else if (loginPanel.getRol().equalsIgnoreCase("Administrador de Inventario")) {
                     this.actionsInventory();
                     paintPanel(sendEquipmentPanel);
                 } else if (loginPanel.getRol().equalsIgnoreCase("Entrenador")) {
@@ -400,6 +431,7 @@ public class MainWindow extends javax.swing.JFrame {
         this.viewClientsBtn.setVisible(false);
         this.clientsHistoryBtn.setVisible(false);
         this.membershipsBtn.setVisible(false);
+        this.assistanceClient.setVisible(false);
         // Acciones de inventario
         this.registerEquipment.setVisible(false);
         this.requestEquipmentBtn.setVisible(false);
@@ -419,6 +451,7 @@ public class MainWindow extends javax.swing.JFrame {
         this.viewClientsBtn.setVisible(false);
         this.clientsHistoryBtn.setVisible(false);
         this.membershipsBtn.setVisible(false);
+        this.assistanceClient.setVisible(false);
         // Acciones de inventario
         this.registerEquipment.setVisible(true);
         this.requestEquipmentBtn.setVisible(true);
@@ -438,6 +471,7 @@ public class MainWindow extends javax.swing.JFrame {
         this.viewClientsBtn.setVisible(false);
         this.clientsHistoryBtn.setVisible(false);
         this.membershipsBtn.setVisible(false);
+        this.assistanceClient.setVisible(false);
         // Acciones de inventario
         this.registerEquipment.setVisible(false);
         this.requestEquipmentBtn.setVisible(false);
@@ -457,6 +491,7 @@ public class MainWindow extends javax.swing.JFrame {
         this.viewClientsBtn.setVisible(true);
         this.clientsHistoryBtn.setVisible(true);
         this.membershipsBtn.setVisible(true);
+        this.assistanceClient.setVisible(false);
         // Acciones de inventario
         this.registerEquipment.setVisible(false);
         this.requestEquipmentBtn.setVisible(false);
@@ -478,14 +513,14 @@ public class MainWindow extends javax.swing.JFrame {
         JButton[] buttons = {
             newClientBtn, viewClientsBtn, clientsHistoryBtn, membershipsBtn,
             registerEquipment, requestEquipmentBtn, sendEquipmentBtn, reportEquipmentBtn,
-            assingClient, routinesAttendanceBtn, reportsBtn, newEmployeeBtn, logoutBtn
+            assingClient, routinesAttendanceBtn, reportsBtn, newEmployeeBtn, newRoutine, logoutBtn
         };
 
         for (JButton button : buttons) {
             button.putClientProperty(FlatClientProperties.BUTTON_TYPE, "roundRect");
             button.putClientProperty(FlatClientProperties.STYLE, ""
                     + "arc: 20;"
-                    + "font: bold +14;"
+                    + "font: bold +12;"
                     + "background: " + ColorApp.GREEN + ";"
                     + "foreground: " + ColorApp.WHITE + ";"
                     + "hoverBackground: " + ColorApp.GREEN_DARK + ";"

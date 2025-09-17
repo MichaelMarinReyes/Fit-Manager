@@ -1,6 +1,19 @@
 package frontend.receptionist;
 
+import backend.models.users.Client;
+import backend.services.ClientService;
 import backend.util.ColorApp;
+import com.formdev.flatlaf.FlatClientProperties;
+import java.awt.Color;
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.RowFilter;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -8,12 +21,17 @@ import backend.util.ColorApp;
  */
 public class ClientListPanel extends javax.swing.JPanel {
 
+    private ClientService clientService = new ClientService();
+
     /**
      * Creates new form ClientListPanel
      */
     public ClientListPanel() {
         initComponents();
         this.styleComponents();
+        this.fillTable();
+        this.actionButtons();
+        this.findUser();
     }
 
     /**
@@ -30,6 +48,9 @@ public class ClientListPanel extends javax.swing.JPanel {
         findClientField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         clientsTable = new javax.swing.JTable();
+        editClientBtn = new javax.swing.JButton();
+        deleteUserBtn = new javax.swing.JButton();
+        modifyMembershipBtn = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -38,14 +59,14 @@ public class ClientListPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(9, 6, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 6, 0, 0);
         add(jLabel1, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 378;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 18, 0, 6);
+        gridBagConstraints.insets = new java.awt.Insets(19, 18, 0, 0);
         add(findClientField, gridBagConstraints);
 
         clientsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -64,31 +85,185 @@ public class ClientListPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.ipadx = 522;
-        gridBagConstraints.ipady = 407;
+        gridBagConstraints.ipadx = 783;
+        gridBagConstraints.ipady = 514;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 6, 7);
+        gridBagConstraints.insets = new java.awt.Insets(6, 6, 12, 6);
         add(jScrollPane1, gridBagConstraints);
+
+        editClientBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editUser.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 18, 0, 0);
+        add(editClientBtn, gridBagConstraints);
+
+        deleteUserBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/deleteUser.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 46, 0, 0);
+        add(deleteUserBtn, gridBagConstraints);
+
+        modifyMembershipBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/membershipUser.png"))); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 20;
+        gridBagConstraints.ipady = 20;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 47, 0, 6);
+        add(modifyMembershipBtn, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable clientsTable;
+    private javax.swing.JButton deleteUserBtn;
+    private javax.swing.JButton editClientBtn;
     private javax.swing.JTextField findClientField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton modifyMembershipBtn;
     // End of variables declaration//GEN-END:variables
 
     private void styleComponents() {
         jLabel1.putClientProperty("FlatLaf.style", "font: bold +14; foreground: " + ColorApp.GREEN + ";");
-
         findClientField.putClientProperty("JTextField.placeholderText", "Ingrese nombre del cliente, teléfono, UUID o membresía");
         findClientField.putClientProperty("FlatLaf.style", "arc: 15; focusColor: " + ColorApp.GREEN + "; font: 14;");
 
-        clientsTable.putClientProperty("FlatLaf.style", "selectionBackground: " + ColorApp.GREEN + "; selectionForeground: #FFFFFF;");
+        JButton[] buttons = {editClientBtn, deleteUserBtn, modifyMembershipBtn};
+        String[] tooltips = {"Editar Cliente", "Eliminar Cliente", "Modificar Membresía"};
+        for (int i = 0; i < buttons.length; i++) {
+            JButton btn = buttons[i];
+            btn.putClientProperty(FlatClientProperties.BUTTON_TYPE, "roundRect");
+            btn.putClientProperty(FlatClientProperties.STYLE,
+                    "arc: 15;"
+                    + "font: bold +12;"
+                    + "background: " + ColorApp.GREEN + ";"
+                    + "foreground: " + ColorApp.WHITE + ";"
+                    + "hoverBackground: " + ColorApp.GREEN_DARK + ";"
+                    + "pressedBackground: " + ColorApp.GREEN_DARKED + ";");
+            btn.setHorizontalTextPosition(SwingConstants.CENTER);
+            btn.setVerticalTextPosition(SwingConstants.BOTTOM);
+            btn.setToolTipText(tooltips[i]);
+        }
+
+        // Tabla
+        clientsTable.setRowHeight(30);
+        clientsTable.setGridColor(Color.GREEN);
+        clientsTable.setShowGrid(true);
+        clientsTable.setFillsViewportHeight(true);
+        clientsTable.setAutoCreateRowSorter(true);
+
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
+        for (int i = 0; i < clientsTable.getColumnCount(); i++) {
+            clientsTable.getColumnModel().getColumn(i).setCellRenderer(centerRenderer);
+        }
+
+        clientsTable.getTableHeader().setDefaultRenderer(new DefaultTableCellRenderer() {
+            @Override
+            public java.awt.Component getTableCellRendererComponent(javax.swing.JTable table, Object value,
+                    boolean isSelected, boolean hasFocus, int row, int column) {
+                super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                setHorizontalAlignment(SwingConstants.CENTER);
+                setBackground(Color.decode(ColorApp.GREEN.toString()));
+                setForeground(Color.WHITE);
+                setFont(getFont().deriveFont(java.awt.Font.BOLD, 14f));
+                return this;
+            }
+        });
+
+        for (int column = 0; column < clientsTable.getColumnCount(); column++) {
+            int maxWidth = (column == 7) ? 120 : 50;
+            for (int row = 0; row < clientsTable.getRowCount(); row++) {
+                TableCellRenderer renderer = clientsTable.getCellRenderer(row, column);
+                java.awt.Component comp = clientsTable.prepareRenderer(renderer, row, column);
+                maxWidth = Math.max(comp.getPreferredSize().width + 10, maxWidth);
+            }
+            clientsTable.getColumnModel().getColumn(column).setPreferredWidth(maxWidth);
+        }
+    }
+
+    private void fillTable() {
+        String[] columns = {"No.", "UUID", "Nombre", "Teléfono", "Contacto de emergencia", "Entrenador", "Membresía"};
+        ArrayList<Client> clients = this.clientService.getAllClients();
+        DefaultTableModel model = new DefaultTableModel(columns, clients.size());
+        clientsTable.setModel(model);
+
+        TableModel dataModel = clientsTable.getModel();
+
+        for (int i = 0; i < clients.size(); i++) {
+            Client client = clients.get(i);
+            dataModel.setValueAt((i + 1), i, 0);
+            dataModel.setValueAt(client.getId().toString(), i, 1);
+            dataModel.setValueAt(client.getUserName(), i, 2);
+            dataModel.setValueAt(client.getPhoneNumber(), i, 3);
+            dataModel.setValueAt(client.getContactEmergency(), i, 4);
+            if (client.getAssignedTrainer().getUserName() == null) {
+                dataModel.setValueAt("Sin entrenador", i, 5);
+            } else {
+                dataModel.setValueAt(client.getAssignedTrainer().getUserName(), i, 5);
+            }
+            dataModel.setValueAt(/*client.getCurrentMembership().getMembershipType()*/"Sin dato actual", i, 6);
+        }
+    }
+
+    private void actionButtons() {
+        editClientBtn.setEnabled(false);
+        deleteUserBtn.setEnabled(false);
+        modifyMembershipBtn.setEnabled(false);
+
+        clientsTable.getSelectionModel().addListSelectionListener(event -> {
+            if (!event.getValueIsAdjusting()) {
+                boolean rowSelected = clientsTable.getSelectedRow() != -1;
+                editClientBtn.setEnabled(rowSelected);
+                deleteUserBtn.setEnabled(rowSelected);
+                modifyMembershipBtn.setEnabled(rowSelected);
+            }
+        });
+    }
+
+    private void findUser() {
+        DefaultTableModel model = (DefaultTableModel) clientsTable.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        clientsTable.setRowSorter(sorter);
+
+        findClientField.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            @Override
+            public void insertUpdate(javax.swing.event.DocumentEvent e) {
+                filter();
+            }
+
+            @Override
+            public void removeUpdate(javax.swing.event.DocumentEvent e) {
+                filter();
+            }
+
+            @Override
+            public void changedUpdate(javax.swing.event.DocumentEvent e) {
+                filter();
+            }
+
+            private void filter() {
+                String text = findClientField.getText().trim();
+                if (text.length() == 0) {
+                    sorter.setRowFilter(null);
+                } else {
+                    sorter.setRowFilter(RowFilter.regexFilter("(?i)" + text, 1, 2, 3, 4, 5, 6));
+                }
+            }
+        });
     }
 }

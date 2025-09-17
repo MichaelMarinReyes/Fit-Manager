@@ -17,9 +17,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Client extends User {
-    private String contact;
-    private Membership currentMembership;
+    private String contactEmergency;
     private Trainer assignedTrainer;
+    private Membership currentMembership;
     private List<Routine> routines;
     private List<Attendance> attendanceHistory;
     private List<Payment> paymentHistory;

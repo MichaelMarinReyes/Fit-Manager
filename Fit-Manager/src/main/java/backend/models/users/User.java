@@ -2,9 +2,14 @@ package backend.models.users;
 
 import lombok.*;
 
-@Data
+import java.util.UUID;
+
 @NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class User {
-    private String id;
+    private UUID id;
     private String userName;
+    private String phoneNumber;
 }

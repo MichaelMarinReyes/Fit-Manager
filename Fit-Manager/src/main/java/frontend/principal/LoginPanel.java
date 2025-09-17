@@ -4,6 +4,7 @@ import backend.services.LoginService;
 import backend.util.ColorApp;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -13,6 +14,7 @@ import javax.swing.JOptionPane;
 public class LoginPanel extends javax.swing.JPanel {
 
     private boolean validLogin = false;
+    private LoginService loginService = new LoginService();
 
     /**
      * Creates new form LoginPanel
@@ -20,7 +22,8 @@ public class LoginPanel extends javax.swing.JPanel {
     public LoginPanel() {
         initComponents();
         styleComponents();
-        validLogin = false;
+        this.validLogin = false;
+        this.setRolComboBox();
     }
 
     public boolean isValidLogin() {
@@ -28,19 +31,7 @@ public class LoginPanel extends javax.swing.JPanel {
     }
 
     public String getRol() {
-        if (rolUserCombobox.getSelectedIndex() == 0) {
-            return "Administrador";
-        }
-        if (rolUserCombobox.getSelectedIndex() == 1) {
-            return "Inventario";
-        }
-        if (rolUserCombobox.getSelectedIndex() == 2) {
-            return "Entrenador";
-        }
-        if (rolUserCombobox.getSelectedIndex() == 3) {
-            return "Recepcionista";
-        }
-        return "";
+        return rolUserCombobox.getSelectedItem().toString();
     }
 
     public void setValidLogin(boolean validLogin) {
@@ -154,11 +145,10 @@ public class LoginPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(39, 78, 0, 0);
         add(jLabel4, gridBagConstraints);
 
-        rolUserCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Administrador Inventario", "Entrenador", "Recepcionista" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.ipadx = 40;
+        gridBagConstraints.ipadx = 20;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(34, 20, 0, 0);
@@ -178,7 +168,10 @@ public class LoginPanel extends javax.swing.JPanel {
             return;
         }
 
-        LoginService loginService = new LoginService();
+        if (rolUserCombobox.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Debe escoger el tipo de empleado", "Tipo de empleado", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
 
         if (loginService.login(username, password, rol)) {
 
@@ -205,6 +198,19 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> rolUserCombobox;
     private javax.swing.JTextField userIdTextField;
     // End of variables declaration//GEN-END:variables
+
+    private void setRolComboBox() {
+        rolUserCombobox.removeAllItems();
+        ArrayList<String> roles = loginService.getRoles();
+
+        rolUserCombobox.addItem("Tipo de empleado");
+
+        if (!roles.isEmpty()) {
+            for (String rol : roles) {
+                rolUserCombobox.addItem(rol);
+            }
+        }
+    }
 
     /**
      * Sirve para dar formato de colores y diseño a los componentes
