@@ -16,6 +16,12 @@ VALUES (uuid_generate_v4(), 'Administrador'),
 (uuid_generate_v4(), 'Recepcionista');
 
 -- Empleados
+-- Administradores
+INSERT INTO employee(employee_id, role_id, branch_id, employee_name, password, contact_phone)
+VALUES (uuid_generate_v4(), (SELECT role_id FROM role WHERE role_name = 'Administrador'), (SELECT branch_id FROM gym_branch WHERE branch_name = 'Sucursal Central'), 'Carlos Gómez', 'admincar123','12345678'),
+(uuid_generate_v4(), (SELECT role_id FROM role WHERE role_name = 'Administrador'), (SELECT branch_id FROM gym_branch WHERE branch_name = 'Sucursal Norte'), 'Nathalie Monzón', 'adminnath123','87654321'),
+(uuid_generate_v4(), (SELECT role_id FROM role WHERE role_name = 'Administrador'), (SELECT branch_id FROM gym_branch WHERE branch_name = 'Sucursal Sur'), 'Miguel Ramírez', 'adminmig123','24681357')
+
 INSERT INTO employee(employee_id, role_id, branch_id, employee_name, password, contact_phone)
 VALUES 
 -- Sucursal Central

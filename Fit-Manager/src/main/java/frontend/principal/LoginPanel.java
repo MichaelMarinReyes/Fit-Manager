@@ -222,6 +222,7 @@ public class LoginPanel extends javax.swing.JPanel {
         } else {
             setValidLogin(false);
             JOptionPane.showMessageDialog(this, "Credenciales inválidas", "Error", JOptionPane.ERROR_MESSAGE);
+            userIdTextField.requestFocus();
         }
 
         userIdTextField.setText("");
@@ -262,6 +263,7 @@ public class LoginPanel extends javax.swing.JPanel {
     private void rolUserComboboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rolUserComboboxKeyPressed
         if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
             loginBtn.requestFocus();
+            loginBtn.doClick();
         }
     }//GEN-LAST:event_rolUserComboboxKeyPressed
 

@@ -387,6 +387,11 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton viewClientsBtn;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Sirve para cambiar las vistas de la aplicación.
+     * @param panel es el componente de tipo JPanel que mostrará
+     * como vista de la aplicación.
+     */
     private void paintPanel(JPanel panel) {
         panel.setOpaque(false);
         contentPane.removeAll();
@@ -396,6 +401,10 @@ public class MainWindow extends javax.swing.JFrame {
         contentPane.revalidate();
     }
 
+    /**
+     * Muestra el panel de opciones cuando un login ha sido correcto,
+     * muestra una vista según el usuario logueado.
+     */
     private void viewMenuBar() {
         loginPanel.addPropertyChangeListener("validLogin", evt -> {
             boolean status = (boolean) evt.getNewValue();
@@ -422,6 +431,10 @@ public class MainWindow extends javax.swing.JFrame {
         });
     }
 
+    /**
+     * Muestra los botones que de las acciones que realiza un administrador
+     * y oculta la de los demás roles.
+     */
     private void actionsAdmin() {
         // Acciones del Recepcionista
         this.newClientBtn.setVisible(false);
@@ -443,6 +456,10 @@ public class MainWindow extends javax.swing.JFrame {
         this.newEmployeeBtn.setVisible(true);
     }
 
+     /**
+     * Muestra los botones que de las acciones que realiza un administrador
+     * de inventario y oculta la de los demás roles.
+     */
     private void actionsInventory() {
         // Acciones del Recepcionista
         this.newClientBtn.setVisible(false);
@@ -464,6 +481,10 @@ public class MainWindow extends javax.swing.JFrame {
         this.newEmployeeBtn.setVisible(false);
     }
 
+     /**
+     * Muestra los botones que de las acciones que realiza un entrenador
+     * y oculta la de los demás roles.
+     */
     private void actionsTrainer() {
         // Acciones del Recepcionista
         this.newClientBtn.setVisible(false);
@@ -485,6 +506,10 @@ public class MainWindow extends javax.swing.JFrame {
         this.newEmployeeBtn.setVisible(false);
     }
 
+     /**
+     * Muestra los botones que de las acciones que realiza un recepcionista
+     * y oculta la de los demás roles.
+     */
     private void actionsReceptionist() {
         // Acciones del Recepcionista
         this.newClientBtn.setVisible(true);
@@ -506,6 +531,9 @@ public class MainWindow extends javax.swing.JFrame {
         this.newEmployeeBtn.setVisible(false);
     }
 
+     /**
+     * Da estilo al menú de opciones de los roles.
+     */
     private void styleMenuBarFlatLaf() {
         menuBar.putClientProperty(FlatClientProperties.STYLE, "background: " + ColorApp.GREEN + ";");
 
@@ -528,10 +556,17 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Clase interna que sirve para mostrar la imagen de fondo.
+     */
     class PanelBackground extends JPanel {
 
         private Image image;
 
+        /**
+         * Sirve para pintar la imagen en el panel.
+         * @param g es el gráfico que contendrá la ruta de la imagen.
+         */
         @Override
         public void paint(Graphics g) {
             image = new ImageIcon(getClass().getResource("/images/BigSportgym.jpg")).getImage();
@@ -541,6 +576,11 @@ public class MainWindow extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Sirve para obtener el ícono que se mostrará en la aplicación.
+     * @return un objeto de tipo Image que lleve la imagen del ícono
+     * que se mostrará.
+     */
     @Override
     public Image getIconImage() {
         Image retValue = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/images/IconGym.png"));

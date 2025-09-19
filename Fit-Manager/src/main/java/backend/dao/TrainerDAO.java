@@ -11,6 +11,14 @@ import java.util.UUID;
 
 public class TrainerDAO {
 
+    /**
+     * Consulta a la base de datos un empleado según un UUUID.
+     *
+     * @param trainerId es el UUID del empleado con rol de entrenador para que devuelva el dato
+     *                  si hay coincidencias en la base de datos.
+     * @return un objeto de tipo Trainer si hubo coincidendcia en la base de datos, de lo
+     * contrario retorna null.
+     */
     public Trainer getTrainerId(UUID trainerId) {
         if (trainerId == null) return null;
 
@@ -37,6 +45,12 @@ public class TrainerDAO {
         return trainer;
     }
 
+    /**
+     * Consulta a la base de datos todos los empleados que tengan rol de entrenadores, busca por
+     * medio de su UUID que corresponde al rol de entrenador.
+     * @return un ArrayList<Trainer> que contiene todos los empleados con rol de entrenador que
+     * existen en la base de datos.
+     */
     public ArrayList<Trainer> getAllTrainers() {
         String query = "SELECT employee_id, employee_name FROM employee WHERE role_id = 'f295b6c8-ff08-4d4b-a065-38507b62e8f9';";
         Trainer trainer = null;

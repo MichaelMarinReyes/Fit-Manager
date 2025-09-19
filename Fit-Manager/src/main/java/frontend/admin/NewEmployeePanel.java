@@ -1,8 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package frontend.admin;
+
+import backend.models.gym.Branch;
+import backend.models.gym.StorageWarehouse;
+import backend.services.BranchService;
+import backend.services.EmployeeService;
+import backend.services.StorageWarehouseService;
+import backend.util.ColorApp;
+import com.formdev.flatlaf.FlatClientProperties;
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.UUID;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -10,11 +20,21 @@ package frontend.admin;
  */
 public class NewEmployeePanel extends javax.swing.JPanel {
 
+    private final UUID GENERATE_UUID = this.generteUUID();
+    private final EmployeeService employeeService = new EmployeeService();
+    private final BranchService branchesServices = new BranchService();
+    private final StorageWarehouseService storageWarehouseService = new StorageWarehouseService();
+
     /**
      * Creates new form NewEmployeePanel
      */
     public NewEmployeePanel() {
         initComponents();
+        this.styleComponents();
+        this.fillRolCombobox();
+        this.fillAssignmentBranch();
+        this.gymBranchCombobox.setEnabled(false);
+        this.uuidEmployeeField.setText(this.GENERATE_UUID.toString());
     }
 
     /**
@@ -25,20 +45,302 @@ public class NewEmployeePanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 422, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 357, Short.MAX_VALUE)
-        );
+        jLabel1 = new javax.swing.JLabel();
+        uuidEmployeeField = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        nambeEmployeeField = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        phoneEmployeeField = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        rolEmployeeCombobox = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        gymBranchCombobox = new javax.swing.JComboBox<>();
+        addEmployeeBtn = new javax.swing.JButton();
+        passwordField = new javax.swing.JPasswordField();
+
+        setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setFont(new java.awt.Font("Hack NFM", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel1.setText("Código de empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(31, 134, 0, 0);
+        add(jLabel1, gridBagConstraints);
+
+        uuidEmployeeField.setEditable(false);
+        uuidEmployeeField.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.insets = new java.awt.Insets(32, 28, 0, 151);
+        add(uuidEmployeeField, gridBagConstraints);
+
+        jLabel2.setFont(new java.awt.Font("Hack NFM", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel2.setText("Nombre:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(13, 266, 0, 0);
+        add(jLabel2, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(14, 28, 0, 151);
+        add(nambeEmployeeField, gridBagConstraints);
+
+        jLabel3.setFont(new java.awt.Font("Hack NFM", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel3.setText("Número de contácto:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 134, 0, 0);
+        add(jLabel3, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(20, 28, 0, 151);
+        add(phoneEmployeeField, gridBagConstraints);
+
+        jLabel4.setFont(new java.awt.Font("Hack NFM", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel4.setText("Contraseña:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(26, 222, 0, 0);
+        add(jLabel4, gridBagConstraints);
+
+        jLabel5.setText("Nuevo Empleado");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(34, 250, 0, 0);
+        add(jLabel5, gridBagConstraints);
+
+        jLabel6.setFont(new java.awt.Font("Hack NFM", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel6.setText("Rol de empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(31, 167, 0, 0);
+        add(jLabel6, gridBagConstraints);
+
+        rolEmployeeCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.ipady = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(22, 28, 0, 0);
+        add(rolEmployeeCombobox, gridBagConstraints);
+
+        jLabel7.setFont(new java.awt.Font("Hack NFM", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 153, 0));
+        jLabel7.setText("Asignar a:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(27, 233, 0, 0);
+        add(jLabel7, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 11;
+        gridBagConstraints.ipadx = 80;
+        gridBagConstraints.ipady = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(25, 28, 0, 0);
+        add(gymBranchCombobox, gridBagConstraints);
+
+        addEmployeeBtn.setText("Añadir Empleado");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(63, 244, 58, 0);
+        add(addEmployeeBtn, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.ipadx = 150;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(26, 28, 0, 151);
+        add(passwordField, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addEmployeeBtn;
+    private javax.swing.JComboBox<String> gymBranchCombobox;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JTextField nambeEmployeeField;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField phoneEmployeeField;
+    private javax.swing.JComboBox<String> rolEmployeeCombobox;
+    private javax.swing.JTextField uuidEmployeeField;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Sirve para dar estilo a los componentes de este formulario.
+     */
+    private void styleComponents() {
+        jLabel5.putClientProperty("FlatLaf.style",
+                "font: bold +20; foreground: " + ColorApp.GREEN + ";");
+
+        JTextField[] textFields = {uuidEmployeeField, nambeEmployeeField, phoneEmployeeField};
+        String[] placeholders = {"Ingrese código", "Ingrese nombre completo", "Ingrese teléfono"};
+
+        for (int i = 0; i < textFields.length; i++) {
+            JTextField field = textFields[i];
+            field.putClientProperty("JTextField.placeholderText", placeholders[i]);
+            field.putClientProperty("FlatLaf.style",
+                    "arc: 15;"
+                    + "focusColor: " + ColorApp.GREEN + ";"
+                    + "font: 14;"
+                    + "foreground: " + ColorApp.GREEN_DARK + ";"
+                    + "margin: 5,10,5,10;");
+            field.setPreferredSize(new Dimension(150, 30));
+        }
+
+        passwordField.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Contraseña");
+        passwordField.putClientProperty(FlatClientProperties.STYLE, ""
+                + "arc: 15;"
+                + "focusWidth: 2;"
+                + "focusColor: " + ColorApp.GREEN + ";"
+                + "showRevealButton: true;"
+                + "margin: 5,10,5,10;"
+                + "font: 14;"
+        );
+        passwordField.setPreferredSize(new Dimension(150, 35));
+
+        JComboBox<?>[] combos = {rolEmployeeCombobox, gymBranchCombobox};
+        for (JComboBox<?> combo : combos) {
+            combo.putClientProperty("FlatLaf.style",
+                    "arc: 15;"
+                    + "font: 14;"
+                    + "foreground: " + ColorApp.GREEN_DARK + ";");
+            combo.setPreferredSize(new Dimension(150, 30));
+        }
+
+        addEmployeeBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, "roundRect");
+        addEmployeeBtn.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 15;"
+                + "font: bold +14;"
+                + "background: " + ColorApp.GREEN + ";"
+                + "foreground: " + ColorApp.WHITE + ";"
+                + "hoverBackground: " + ColorApp.GREEN_DARK + ";"
+                + "pressedBackground: " + ColorApp.GREEN_DARKED + ";");
+    }
+
+    /**
+     * Sirve para llenar el JComboBox según el rol elegido para el empleado
+     * nuevo.
+     */
+    private void fillAssignmentBranch() {
+        rolEmployeeCombobox.addActionListener(e -> {
+            if (rolEmployeeCombobox.getSelectedIndex() == 0) {
+                gymBranchCombobox.removeAllItems();
+                gymBranchCombobox.addItem("Elegir sucursal");
+                gymBranchCombobox.setEnabled(false);
+            } else {
+                gymBranchCombobox.setEnabled(true);
+                if (rolEmployeeCombobox.getSelectedItem().toString().equalsIgnoreCase("Administrador de Inventario")) {
+                    gymBranchCombobox.removeAllItems();
+                    this.fillStorageWarehouse();
+                } else {
+                    gymBranchCombobox.removeAllItems();
+                    this.fillGymBranch();
+                }
+            }
+        });
+    }
+
+    /**
+     * Sirve para llenar el JComboBox con los roles existentes en la base de
+     * datos.
+     */
+    private void fillRolCombobox() {
+        rolEmployeeCombobox.removeAllItems();
+        ArrayList<String> roles = employeeService.getRoles();
+
+        rolEmployeeCombobox.addItem("Tipo de empleado");
+
+        if (!roles.isEmpty()) {
+            for (String rol : roles) {
+                rolEmployeeCombobox.addItem(rol);
+            }
+        }
+    }
+
+    /**
+     * Sirve para llenar el JComboBox con las sucursales donde será asignado el
+     * empleado nuevo.
+     */
+    private void fillGymBranch() {
+        gymBranchCombobox.removeAllItems();
+        ArrayList<Branch> branches = branchesServices.getBranches();
+
+        gymBranchCombobox.addItem("Elegir sucursal");
+
+        if (!branches.isEmpty()) {
+            for (Branch branch : branches) {
+                gymBranchCombobox.addItem(branch.getName());
+            }
+        }
+    }
+
+    /**
+     * Sirve para llenar el JComboBox con las bodegas donde será asignado el
+     * empleado nuevo.
+     */
+    private void fillStorageWarehouse() {
+        ArrayList<StorageWarehouse> storageWarehouses = storageWarehouseService.getStorageWarehouses();
+
+        gymBranchCombobox.addItem("Elegir sucursal");
+
+        if (!storageWarehouses.isEmpty()) {
+            for (StorageWarehouse storageWarehouse : storageWarehouses) {
+                gymBranchCombobox.addItem(storageWarehouse.getName());
+            }
+        }
+    }
+
+    /**
+     * Genera un UUID para el nuevo empleado.
+     *
+     * @return el UUID generado aleatoreamente.
+     */
+    private UUID generteUUID() {
+        return UUID.randomUUID();
+    }
 }

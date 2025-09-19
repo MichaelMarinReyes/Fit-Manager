@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
-  <Properties>
-    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-      <Color blue="33" green="cc" red="ff" type="rgb"/>
-    </Property>
-  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -22,27 +17,314 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="157" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="142" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="300" max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="contentPane" pref="710" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="176" max="32767" attributes="0"/>
+              <Component id="contentPane" pref="1585" max="32767" attributes="0"/>
+              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
           </Group>
+          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Container class="javax.swing.JPanel" name="contentPane">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+    </Container>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="ADMINISTRADOR"/>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="columnHeaderView" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+          <ComponentRef name="null"/>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Default Cursor"/>
+        </Property>
+        <Property name="opaque" type="boolean" value="false"/>
+        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[280, 1590]"/>
+        </Property>
       </Properties>
-    </Component>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="menuPanel">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[270, 1588]"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Component id="jLabel1" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="mostFrequentBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="higherExpenseBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="greaterAssistenceBtn" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="jSeparator5" min="-2" pref="180" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                              <Component id="jLabel2" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="mostClientsBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="moreRoutinesCreatedBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="sameTimeBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="moreAdditionalServicesBtn" alignment="0" pref="203" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                              <Component id="jSeparator6" min="-2" pref="180" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="jLabel3" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="moreIncomeBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="GreaterAssistanceBtn" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="jSeparator7" min="-2" pref="180" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="jLabel4" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="bestSellingBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="membershipIncomeBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="paymentsDatesBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="membershipsClientsBtnclie" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="jSeparator1" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                              <Component id="jLabel5" max="32767" attributes="0"/>
+                          </Group>
+                          <Component id="mostUsedEquipmentBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="greaterOverlapRoutinesBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="availablePerBranchBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="damagedEquipmentBtn" alignment="0" max="32767" attributes="0"/>
+                          <Component id="mostUsedBtn" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Component id="jLabel1" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="mostFrequentBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="higherExpenseBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="greaterAssistenceBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="jSeparator5" min="-2" pref="14" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Component id="jLabel2" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="mostClientsBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="moreRoutinesCreatedBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="sameTimeBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="moreAdditionalServicesBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <Component id="jSeparator6" min="-2" pref="14" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="jLabel3" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="moreIncomeBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="GreaterAssistanceBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jSeparator7" min="-2" pref="14" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="jLabel4" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="bestSellingBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="membershipIncomeBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="paymentsDatesBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="membershipsClientsBtnclie" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                      <Component id="jSeparator1" pref="20" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                      <Component id="jLabel5" pref="18" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                      <Component id="mostUsedEquipmentBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="greaterOverlapRoutinesBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="availablePerBranchBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="damagedEquipmentBtn" pref="60" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                      <Component id="mostUsedBtn" pref="54" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte de clientes"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="mostClientsBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Con m&#xe1;s clientes"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator1">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel2">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte de enternadores"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="mostUsedBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#xe1;s utilizados"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="mostFrequentBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#xe1;s frecuentes"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostFrequentBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="higherExpenseBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Con mayor gasto"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="greaterAssistenceBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Con mayor asistencia"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="moreRoutinesCreatedBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M&#xe1;s rutinas creadas"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="sameTimeBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Con m&#xe1;s clientes asignados"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator5">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel3">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte de sucursales"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="moreAdditionalServicesBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Con m&#xe1;s servicios adicionales"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="moreIncomeBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Con m&#xe1;s ingresos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator6">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel4">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte de membres&#xed;as y pagos"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="GreaterAssistanceBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Con mayor asistencia"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="bestSellingBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Membres&#xed;as m&#xe1;s vendidas"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="membershipIncomeBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ingresos por membres&#xed;a"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="paymentsDatesBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Pagos por fechas"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSeparator" name="jSeparator7">
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel5">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Reporte de inventarios"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="membershipsClientsBtnclie">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Clientes por membres&#xed;a"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="mostUsedEquipmentBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Equipos m&#xe1;s utilizados"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="greaterOverlapRoutinesBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mayor coincidencia de rutinas"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="availablePerBranchBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Disponibles por sucursal"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="damagedEquipmentBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Equipos da&#xf1;ados"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

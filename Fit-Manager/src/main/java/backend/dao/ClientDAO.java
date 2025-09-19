@@ -13,6 +13,10 @@ import java.util.UUID;
 
 public class ClientDAO {
 
+    /**
+     * Crea un listado con todos los clientes existentes en la base de datos.
+     * @return un ArrayList<Client> de Client.
+     */
     public ArrayList<Client> getClients() {
         ArrayList<Client> clients = new ArrayList<>();
         String query = "SELECT client_id, name, phone_number, contact_emergency, trainer_id, membership_type_id FROM client";

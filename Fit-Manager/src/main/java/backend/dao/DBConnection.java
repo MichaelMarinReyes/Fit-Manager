@@ -16,6 +16,9 @@ public final class DBConnection {
     private final String URL = "jdbc:postgresql://" + HOST + ":" + PORT + "/" + DATABASE;
     private Connection connection;
 
+    /**
+     * Constructor de la clase.
+     */
     public DBConnection() {
         try {
             Class.forName("org.postgresql.Driver");
@@ -24,6 +27,10 @@ public final class DBConnection {
         }
     }
 
+    /**
+     * Crea la instancia de la clase.
+     * @return la instancia de la conección.
+     */
     public static DBConnection getInstance(){
         if (instance == null){
             instance = new DBConnection();
@@ -31,10 +38,20 @@ public final class DBConnection {
         return instance;
     }
 
+    /**
+     * Se encarga de crear la conexión con la base de datos con la URL, USER y PASSWORD.
+     * @return la conexión con la base de datos.
+     * @throws SQLException genera la excepción en caso que no se pueda comunicar con la base
+     * de datos o estén incorrectas las credenciales.
+     */
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
 
+    /**
+     * Cierra la conección con la base de datos.
+     * @throws SQLException en caso que no se pueda comunicar con la base de datos.
+     */
     public void closeConnection() throws SQLException {
         try {
             if (connection != null && !connection.isClosed()){

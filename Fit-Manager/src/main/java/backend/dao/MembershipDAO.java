@@ -11,6 +11,12 @@ import java.util.UUID;
 
 public class MembershipDAO {
 
+    /**
+     * Sirve para obtener una membresía según su UUID.
+     * @param membershipId es el UUID que se recibe para realizar la búsqueda en la base
+     *                     de datos.
+     * @return la membresía si hubo una coincidencia, de lo contrario retorna null.
+     */
     public Membership getMembershipId(UUID membershipId) {
         if (membershipId == null) return null;
 

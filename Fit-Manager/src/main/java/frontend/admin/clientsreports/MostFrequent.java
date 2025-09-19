@@ -1,13 +1,10 @@
-package frontend.receptionist;
+package frontend.admin.clientsreports;
 
 import backend.models.users.Client;
 import backend.services.ClientService;
 import backend.util.ColorApp;
-import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.util.ArrayList;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.RowFilter;
 import javax.swing.SwingConstants;
@@ -21,19 +18,19 @@ import javax.swing.table.TableRowSorter;
  *
  * @author michael
  */
-public class ClientListPanel extends javax.swing.JPanel {
+public class MostFrequent extends javax.swing.JPanel {
 
-    private final ClientService clientService = new ClientService();
+    private ClientService clientService = new ClientService();
 
     /**
-     * Creates new form ClientListPanel
+     * Creates new form MostFrequent
      */
-    public ClientListPanel() {
+    public MostFrequent() {
         initComponents();
-        this.fillTable();
         this.styleComponents();
-        this.actionButtons();
+        this.fillTable();
         this.findUser();
+        this.findClientField.requestFocus();
     }
 
     /**
@@ -46,31 +43,12 @@ public class ClientListPanel extends javax.swing.JPanel {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jLabel1 = new javax.swing.JLabel();
-        findClientField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         clientsTable = new javax.swing.JTable();
-        editClientBtn = new javax.swing.JButton();
-        deleteUserBtn = new javax.swing.JButton();
-        modifyMembershipBtn = new javax.swing.JButton();
-        updateTableBtn = new javax.swing.JButton();
+        findClientField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new java.awt.GridBagLayout());
-
-        jLabel1.setText("Bucar cliente:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(11, 6, 0, 0);
-        add(jLabel1, gridBagConstraints);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 378;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(19, 18, 0, 0);
-        add(findClientField, gridBagConstraints);
 
         clientsTable = new javax.swing.JTable(){
             public boolean isCellEditable(int row, int col) {
@@ -93,157 +71,47 @@ public class ClientListPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 889;
-        gridBagConstraints.ipady = 404;
+        gridBagConstraints.ipady = 399;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(6, 6, 12, 6);
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
         add(jScrollPane1, gridBagConstraints);
-
-        editClientBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editUser.png"))); // NOI18N
-        editClientBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editClientBtnActionPerformed(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.ipady = 20;
+        gridBagConstraints.ipadx = 378;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 80, 5, 10);
-        add(editClientBtn, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 36, 10, 0);
+        add(findClientField, gridBagConstraints);
 
-        deleteUserBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/deleteUser.png"))); // NOI18N
-        deleteUserBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteUserBtnActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Bucar cliente:");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.ipady = 20;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        add(deleteUserBtn, gridBagConstraints);
-
-        modifyMembershipBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/membershipUser.png"))); // NOI18N
-        modifyMembershipBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifyMembershipBtnActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 20;
-        gridBagConstraints.ipady = 20;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        add(modifyMembershipBtn, gridBagConstraints);
-
-        updateTableBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updateList.png"))); // NOI18N
-        updateTableBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateTableBtnActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 12;
-        gridBagConstraints.ipady = 12;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        add(updateTableBtn, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(6, 225, 10, 0);
+        add(jLabel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void editClientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editClientBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editClientBtnActionPerformed
-
-    /**
-     * Sirve para eliminar el usuario seleccionado de la tabla.
-     *
-     * @param evt
-     */
-    private void deleteUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteUserBtnActionPerformed
-        int optionDelete = JOptionPane.showConfirmDialog(this, "¿Seguro que desea eliminar al cliente seleccionado?", "Eliminar Cliente", JOptionPane.YES_NO_OPTION);
-
-        if (optionDelete == 0) {
-            JOptionPane.showMessageDialog(this, "El cliente ha sido eliminado", "Cliente eliminado", JOptionPane.INFORMATION_MESSAGE);
-            this.fillTable();
-        } else {
-            JOptionPane.showMessageDialog(this, "Operación cancelada", "Eliminación cancelada", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_deleteUserBtnActionPerformed
-
-    private void modifyMembershipBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyMembershipBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_modifyMembershipBtnActionPerformed
-
-    /**
-     * Sirve para actualizar el listado de clientes en la tabla.
-     *
-     * @param evt captura cuando se presiona la tecla F5.
-     */
-    private void updateTableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTableBtnActionPerformed
-        this.fillTable();
-        editClientBtn.setEnabled(false);
-        deleteUserBtn.setEnabled(false);
-        modifyMembershipBtn.setEnabled(false);
-        this.styleTable();
-    }//GEN-LAST:event_updateTableBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable clientsTable;
-    private javax.swing.JButton deleteUserBtn;
-    private javax.swing.JButton editClientBtn;
     private javax.swing.JTextField findClientField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton modifyMembershipBtn;
-    private javax.swing.JButton updateTableBtn;
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Da estilo a los componentes de este formulario.
+     * Sirve para dar estilo a los componentes.
      */
     private void styleComponents() {
         jLabel1.putClientProperty("FlatLaf.style", "font: bold +14; foreground: " + ColorApp.GREEN + ";");
         findClientField.putClientProperty("JTextField.placeholderText", "Ingrese nombre del cliente, teléfono, UUID o membresía");
         findClientField.putClientProperty("FlatLaf.style", "arc: 15; focusColor: " + ColorApp.GREEN + "; font: 14;");
-
-        JButton[] buttons = {editClientBtn, deleteUserBtn, modifyMembershipBtn, updateTableBtn};
-        String[] tooltips = {"Editar Cliente", "Eliminar Cliente", "Modificar Membresía", "Actualizar listado"};
-        for (int i = 0; i < buttons.length; i++) {
-            JButton btn = buttons[i];
-            btn.putClientProperty(FlatClientProperties.BUTTON_TYPE, "roundRect");
-            btn.putClientProperty(FlatClientProperties.STYLE,
-                    "arc: 15;"
-                    + "font: bold +12;"
-                    + "background: " + ColorApp.GREEN + ";"
-                    + "foreground: " + ColorApp.WHITE + ";"
-                    + "hoverBackground: " + ColorApp.GREEN_DARK + ";"
-                    + "pressedBackground: " + ColorApp.GREEN_DARKED + ";");
-            btn.setHorizontalTextPosition(SwingConstants.CENTER);
-            btn.setVerticalTextPosition(SwingConstants.BOTTOM);
-            btn.setToolTipText(tooltips[i]);
-        }
-        this.styleTable();
-    }
-
-    /**
-     * Da formato a la tabla de listado de clientes.
-     */
-    private void styleTable() {
         clientsTable.setRowHeight(30);
         clientsTable.setGridColor(Color.GREEN);
         clientsTable.setShowGrid(true);
@@ -317,25 +185,7 @@ public class ClientListPanel extends javax.swing.JPanel {
             String membership = (client.getCurrentMembership() == null) ? "Sin membresía" : client.getCurrentMembership().getMembershipType().toString();
             dataModel.setValueAt(membership, i, 6);
         }
-    }
-
-    /**
-     * Habilita los botónes de editar, eliminar y moidificar membresía cuando se
-     * selecciona una fila de la tabla.
-     */
-    private void actionButtons() {
-        editClientBtn.setEnabled(false);
-        deleteUserBtn.setEnabled(false);
-        modifyMembershipBtn.setEnabled(false);
-
-        clientsTable.getSelectionModel().addListSelectionListener(event -> {
-            if (!event.getValueIsAdjusting()) {
-                boolean rowSelected = clientsTable.getSelectedRow() != -1;
-                editClientBtn.setEnabled(rowSelected);
-                deleteUserBtn.setEnabled(rowSelected);
-                modifyMembershipBtn.setEnabled(rowSelected);
-            }
-        });
+        this.styleComponents();
     }
 
     /**

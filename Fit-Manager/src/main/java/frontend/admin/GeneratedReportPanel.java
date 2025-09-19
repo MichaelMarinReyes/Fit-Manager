@@ -1,8 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package frontend.admin;
+
+import backend.util.ColorApp;
+import com.formdev.flatlaf.FlatClientProperties;
+import frontend.admin.clientsreports.MostFrequent;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
 
 /**
  *
@@ -10,11 +19,24 @@ package frontend.admin;
  */
 public class GeneratedReportPanel extends javax.swing.JPanel {
 
+    private final MostFrequent mostFrequent = new MostFrequent();
+
     /**
      * Creates new form AdministratorPanel
      */
     public GeneratedReportPanel() {
         initComponents();
+        this.paintPanel(mostFrequent);
+        this.styleComponents();
+        this.setOpaque(false);
+        contentPane.setOpaque(false);
+        menuPanel.setOpaque(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+        this.paintPanel(mostFrequent);
+        this.styleComponents();
+        this.contentPane.requestFocus();
     }
 
     /**
@@ -25,33 +47,346 @@ public class GeneratedReportPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
+        contentPane = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        menuPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        mostClientsBtn = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel2 = new javax.swing.JLabel();
+        mostUsedBtn = new javax.swing.JButton();
+        mostFrequentBtn = new javax.swing.JButton();
+        higherExpenseBtn = new javax.swing.JButton();
+        greaterAssistenceBtn = new javax.swing.JButton();
+        moreRoutinesCreatedBtn = new javax.swing.JButton();
+        sameTimeBtn = new javax.swing.JButton();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel3 = new javax.swing.JLabel();
+        moreAdditionalServicesBtn = new javax.swing.JButton();
+        moreIncomeBtn = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
+        GreaterAssistanceBtn = new javax.swing.JButton();
+        bestSellingBtn = new javax.swing.JButton();
+        membershipIncomeBtn = new javax.swing.JButton();
+        paymentsDatesBtn = new javax.swing.JButton();
+        jSeparator7 = new javax.swing.JSeparator();
+        jLabel5 = new javax.swing.JLabel();
+        membershipsClientsBtnclie = new javax.swing.JButton();
+        mostUsedEquipmentBtn = new javax.swing.JButton();
+        greaterOverlapRoutinesBtn = new javax.swing.JButton();
+        availablePerBranchBtn = new javax.swing.JButton();
+        damagedEquipmentBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 204, 51));
+        contentPane.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("ADMINISTRADOR");
+        jScrollPane1.setBorder(null);
+        jScrollPane1.setColumnHeaderView(null);
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(280, 1590));
+
+        menuPanel.setPreferredSize(new java.awt.Dimension(270, 1588));
+
+        jLabel1.setText("Reporte de clientes");
+
+        mostClientsBtn.setText("Con más clientes");
+
+        jLabel2.setText("Reporte de enternadores");
+
+        mostUsedBtn.setText("Más utilizados");
+
+        mostFrequentBtn.setText("Más frecuentes");
+        mostFrequentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostFrequentBtnActionPerformed(evt);
+            }
+        });
+
+        higherExpenseBtn.setText("Con mayor gasto");
+
+        greaterAssistenceBtn.setText("Con mayor asistencia");
+
+        moreRoutinesCreatedBtn.setText("Más rutinas creadas");
+
+        sameTimeBtn.setText("Con más clientes asignados");
+
+        jLabel3.setText("Reporte de sucursales");
+
+        moreAdditionalServicesBtn.setText("Con más servicios adicionales");
+
+        moreIncomeBtn.setText("Con más ingresos");
+
+        jLabel4.setText("Reporte de membresías y pagos");
+
+        GreaterAssistanceBtn.setText("Con mayor asistencia");
+
+        bestSellingBtn.setText("Membresías más vendidas");
+
+        membershipIncomeBtn.setText("Ingresos por membresía");
+
+        paymentsDatesBtn.setText("Pagos por fechas");
+
+        jLabel5.setText("Reporte de inventarios");
+
+        membershipsClientsBtnclie.setText("Clientes por membresía");
+
+        mostUsedEquipmentBtn.setText("Equipos más utilizados");
+
+        greaterOverlapRoutinesBtn.setText("Mayor coincidencia de rutinas");
+
+        availablePerBranchBtn.setText("Disponibles por sucursal");
+
+        damagedEquipmentBtn.setText("Equipos dañados");
+
+        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
+        menuPanel.setLayout(menuPanelLayout);
+        menuPanelLayout.setHorizontalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(4, 4, 4))
+                    .addComponent(mostFrequentBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(higherExpenseBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(greaterAssistenceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(4, 4, 4))
+                    .addComponent(mostClientsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(moreRoutinesCreatedBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sameTimeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(moreAdditionalServicesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(moreIncomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(GreaterAssistanceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bestSellingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(membershipIncomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(paymentsDatesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(membershipsClientsBtnclie, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jSeparator1)
+                        .addGap(6, 6, 6))
+                    .addGroup(menuPanelLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(mostUsedEquipmentBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(greaterOverlapRoutinesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(availablePerBranchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(damagedEquipmentBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(mostUsedBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(63, 63, 63))
+        );
+        menuPanelLayout.setVerticalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(mostFrequentBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(higherExpenseBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(greaterAssistenceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(32, 32, 32)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(mostClientsBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(moreRoutinesCreatedBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(sameTimeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(moreAdditionalServicesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(moreIncomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(GreaterAssistanceBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
+                .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(bestSellingBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(membershipIncomeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(paymentsDatesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(membershipsClientsBtnclie, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 18, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(mostUsedEquipmentBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(greaterOverlapRoutinesBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(availablePerBranchBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(damagedEquipmentBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(mostUsedBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
+                .addGap(6, 6, 6))
+        );
+
+        jScrollPane1.setViewportView(menuPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(157, 157, 157)
-                .addComponent(jLabel1)
-                .addContainerGap(142, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(108, 108, 108)
-                .addComponent(jLabel1)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1585, Short.MAX_VALUE)
+                .addGap(12, 12, 12))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void mostFrequentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostFrequentBtnActionPerformed
+        paintPanel(mostFrequent);
+    }//GEN-LAST:event_mostFrequentBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton GreaterAssistanceBtn;
+    private javax.swing.JButton availablePerBranchBtn;
+    private javax.swing.JButton bestSellingBtn;
+    private javax.swing.JPanel contentPane;
+    private javax.swing.JButton damagedEquipmentBtn;
+    private javax.swing.JButton greaterAssistenceBtn;
+    private javax.swing.JButton greaterOverlapRoutinesBtn;
+    private javax.swing.JButton higherExpenseBtn;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JButton membershipIncomeBtn;
+    private javax.swing.JButton membershipsClientsBtnclie;
+    private javax.swing.JPanel menuPanel;
+    private javax.swing.JButton moreAdditionalServicesBtn;
+    private javax.swing.JButton moreIncomeBtn;
+    private javax.swing.JButton moreRoutinesCreatedBtn;
+    private javax.swing.JButton mostClientsBtn;
+    private javax.swing.JButton mostFrequentBtn;
+    private javax.swing.JButton mostUsedBtn;
+    private javax.swing.JButton mostUsedEquipmentBtn;
+    private javax.swing.JButton paymentsDatesBtn;
+    private javax.swing.JButton sameTimeBtn;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * Sirve para cambiar la vista que se verá en el contentPane.
+     *
+     * @param panel es la vista que se mostrará en contentPane de tipo JPanel.
+     */
+    private void paintPanel(JPanel panel) {
+        panel.setOpaque(false);
+        contentPane.removeAll();
+        contentPane.setLayout(new BorderLayout());
+        contentPane.add(panel);
+        contentPane.repaint();
+        contentPane.revalidate();
+    }
+
+    /**
+     * Sirve para modificar la vista de los componentes.
+     */
+    private void styleComponents() {
+        jLabel2.setText("<html>Reporte de<br>clientes</html>");
+        jLabel2.setText("<html>Reporte de<br>entrenadores</html>");
+        jLabel3.setText("<html>Reporte de<br>sucursales</html>");
+        jLabel4.setText("<html>Reporte de<br>membresías y pagos</html>");
+        jLabel5.setText("<html>Reporte de<br>inventarios</html>");
+
+        jScrollPane1.getVerticalScrollBar().setUnitIncrement(30);
+        JLabel[] labels = {jLabel1, jLabel2, jLabel3, jLabel4, jLabel5};
+        for (javax.swing.JLabel label : labels) {
+            label.putClientProperty("FlatLaf.style",
+                    "font: bold +10; foreground: " + ColorApp.GREEN_DARKED + ";");
+        }
+
+        JButton[] buttons = {
+            mostFrequentBtn, higherExpenseBtn, greaterAssistenceBtn,
+            mostClientsBtn, moreRoutinesCreatedBtn, sameTimeBtn, moreAdditionalServicesBtn,
+            moreIncomeBtn, GreaterAssistanceBtn,
+            bestSellingBtn, membershipIncomeBtn, paymentsDatesBtn, membershipsClientsBtnclie,
+            mostUsedEquipmentBtn, greaterOverlapRoutinesBtn, availablePerBranchBtn, damagedEquipmentBtn, mostUsedBtn
+        };
+
+        int maxWidth = 0;
+        for (JButton button : buttons) {
+            button.putClientProperty(FlatClientProperties.BUTTON_TYPE, "roundRect");
+            button.putClientProperty(FlatClientProperties.STYLE,
+                    "arc: 12;"
+                    + "font: +4;"
+                    + "background: " + ColorApp.GREEN + ";"
+                    + "foreground: " + ColorApp.WHITE + ";"
+                    + "hoverBackground: " + ColorApp.GREEN_DARK + ";"
+                    + "pressedBackground: " + ColorApp.GREEN_DARKED + ";"
+                    + "focusWidth: 1;"
+                    + "focusColor: " + ColorApp.GREEN_DARK + ";");
+            button.setFocusable(false);
+
+            maxWidth = Math.max(maxWidth, button.getPreferredSize().width);
+        }
+
+        int buttonHeight = 30;
+        for (JButton button : buttons) {
+            Dimension size = button.getPreferredSize();
+            button.setPreferredSize(new Dimension(size.width, buttonHeight));
+        }
+
+        int indent = 1;
+        for (JButton button : buttons) {
+            button.setMargin(new Insets(1, indent, 1, 1));
+        }
+
+        JSeparator[] separators = {jSeparator1, jSeparator5, jSeparator6, jSeparator7};
+        for (JSeparator sep : separators) {
+            sep.setForeground(Color.GREEN);
+        }
+    }
 }

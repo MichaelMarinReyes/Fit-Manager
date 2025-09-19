@@ -6,5 +6,5 @@ public class Company {
     private String id;
     private String name;
     private List<Branch> branchesList;
-    private Warehouse wareHouse;
+    private StorageWarehouse wareHouse;
 }

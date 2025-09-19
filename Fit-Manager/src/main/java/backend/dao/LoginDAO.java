@@ -8,6 +8,14 @@ import java.util.ArrayList;
 
 public class LoginDAO {
 
+    /**
+     * Verifica y valida que las credenciales ingresadas por parámetro correspondan con
+     * las credenciales de algún empleado registrado en la base de datos.
+     * @param userName representa el nombre de usuario que se recibe desde el frontend.
+     * @param password representa la contraseña que se recibe desde el frontend.
+     * @param rol representa el rol de emplado que se recibe desde el frontend.
+     * @return true si las credenciales coincide, false si las credenciales no coincíden.
+     */
     public boolean verifyCredentials(String userName, String password, String rol) {
         String query = "SELECT e.employee_name, r.role_name FROM Employee e JOIN Role r ON e.role_id = r.role_id WHERE e.employee_name = ? AND e.password = ? AND r.role_name = ?";
 
@@ -26,24 +34,5 @@ public class LoginDAO {
             e.printStackTrace();
             return false;
         }
-    }
-
-    public ArrayList<String> getRoles() {
-        ArrayList<String> roles = new ArrayList<>();
-        String query = "SELECT role_name FROM role;";
-
-        try (Connection connection = DBConnection.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
-
-            while (resultSet.next()) {
-                roles.add(resultSet.getString("role_name"));
-            }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return roles;
     }
 }
