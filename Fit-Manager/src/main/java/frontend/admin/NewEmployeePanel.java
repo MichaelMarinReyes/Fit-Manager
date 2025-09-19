@@ -11,7 +11,6 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.UUID;
 import javax.swing.JComboBox;
-import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 /**

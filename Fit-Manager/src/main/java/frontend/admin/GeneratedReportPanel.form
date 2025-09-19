@@ -26,11 +26,8 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="contentPane" pref="1585" max="32767" attributes="0"/>
-              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
-          </Group>
-          <Component id="jScrollPane1" alignment="1" max="32767" attributes="0"/>
+          <Component id="jScrollPane1" alignment="1" pref="1597" max="32767" attributes="0"/>
+          <Component id="contentPane" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -205,6 +202,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Con m&#xe1;s clientes"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostClientsBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator1">
             </Component>
@@ -217,6 +217,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="M&#xe1;s utilizados"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostUsedBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mostFrequentBtn">
               <Properties>
@@ -230,21 +233,33 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Con mayor gasto"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="higherExpenseBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="greaterAssistenceBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Con mayor asistencia"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="greaterAssistenceBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="moreRoutinesCreatedBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="M&#xe1;s rutinas creadas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moreRoutinesCreatedBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="sameTimeBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Con m&#xe1;s clientes asignados"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sameTimeBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator5">
             </Component>
@@ -257,11 +272,17 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Con m&#xe1;s servicios adicionales"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moreAdditionalServicesBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="moreIncomeBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Con m&#xe1;s ingresos"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="moreIncomeBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator6">
             </Component>
@@ -274,21 +295,33 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Con mayor asistencia"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GreaterAssistanceBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="bestSellingBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Membres&#xed;as m&#xe1;s vendidas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bestSellingBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="membershipIncomeBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ingresos por membres&#xed;a"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="membershipIncomeBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="paymentsDatesBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pagos por fechas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="paymentsDatesBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JSeparator" name="jSeparator7">
             </Component>
@@ -301,26 +334,41 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Clientes por membres&#xed;a"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="membershipsClientsBtnclieActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="mostUsedEquipmentBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Equipos m&#xe1;s utilizados"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mostUsedEquipmentBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="greaterOverlapRoutinesBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Mayor coincidencia de rutinas"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="greaterOverlapRoutinesBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="availablePerBranchBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Disponibles por sucursal"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="availablePerBranchBtnActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="damagedEquipmentBtn">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Equipos da&#xf1;ados"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="damagedEquipmentBtnActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

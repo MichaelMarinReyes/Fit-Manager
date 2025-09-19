@@ -3,10 +3,10 @@ package frontend.admin;
 import backend.util.ColorApp;
 import com.formdev.flatlaf.FlatClientProperties;
 import frontend.admin.clientsreports.MostFrequent;
+import frontend.admin.inventoryreports.EquipmentBranchPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -20,6 +20,7 @@ import javax.swing.JSeparator;
 public class GeneratedReportPanel extends javax.swing.JPanel {
 
     private final MostFrequent mostFrequent = new MostFrequent();
+    private final EquipmentBranchPanel equipmentBranchPanel = new EquipmentBranchPanel();
 
     /**
      * Creates new form AdministratorPanel
@@ -47,7 +48,6 @@ public class GeneratedReportPanel extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         contentPane = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -93,10 +93,20 @@ public class GeneratedReportPanel extends javax.swing.JPanel {
         jLabel1.setText("Reporte de clientes");
 
         mostClientsBtn.setText("Con más clientes");
+        mostClientsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostClientsBtnActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Reporte de enternadores");
 
         mostUsedBtn.setText("Más utilizados");
+        mostUsedBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostUsedBtnActionPerformed(evt);
+            }
+        });
 
         mostFrequentBtn.setText("Más frecuentes");
         mostFrequentBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -106,40 +116,115 @@ public class GeneratedReportPanel extends javax.swing.JPanel {
         });
 
         higherExpenseBtn.setText("Con mayor gasto");
+        higherExpenseBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                higherExpenseBtnActionPerformed(evt);
+            }
+        });
 
         greaterAssistenceBtn.setText("Con mayor asistencia");
+        greaterAssistenceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                greaterAssistenceBtnActionPerformed(evt);
+            }
+        });
 
         moreRoutinesCreatedBtn.setText("Más rutinas creadas");
+        moreRoutinesCreatedBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moreRoutinesCreatedBtnActionPerformed(evt);
+            }
+        });
 
         sameTimeBtn.setText("Con más clientes asignados");
+        sameTimeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sameTimeBtnActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Reporte de sucursales");
 
         moreAdditionalServicesBtn.setText("Con más servicios adicionales");
+        moreAdditionalServicesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moreAdditionalServicesBtnActionPerformed(evt);
+            }
+        });
 
         moreIncomeBtn.setText("Con más ingresos");
+        moreIncomeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                moreIncomeBtnActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("Reporte de membresías y pagos");
 
         GreaterAssistanceBtn.setText("Con mayor asistencia");
+        GreaterAssistanceBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GreaterAssistanceBtnActionPerformed(evt);
+            }
+        });
 
         bestSellingBtn.setText("Membresías más vendidas");
+        bestSellingBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bestSellingBtnActionPerformed(evt);
+            }
+        });
 
         membershipIncomeBtn.setText("Ingresos por membresía");
+        membershipIncomeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                membershipIncomeBtnActionPerformed(evt);
+            }
+        });
 
         paymentsDatesBtn.setText("Pagos por fechas");
+        paymentsDatesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paymentsDatesBtnActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Reporte de inventarios");
 
         membershipsClientsBtnclie.setText("Clientes por membresía");
+        membershipsClientsBtnclie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                membershipsClientsBtnclieActionPerformed(evt);
+            }
+        });
 
         mostUsedEquipmentBtn.setText("Equipos más utilizados");
+        mostUsedEquipmentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostUsedEquipmentBtnActionPerformed(evt);
+            }
+        });
 
         greaterOverlapRoutinesBtn.setText("Mayor coincidencia de rutinas");
+        greaterOverlapRoutinesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                greaterOverlapRoutinesBtnActionPerformed(evt);
+            }
+        });
 
         availablePerBranchBtn.setText("Disponibles por sucursal");
+        availablePerBranchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                availablePerBranchBtnActionPerformed(evt);
+            }
+        });
 
         damagedEquipmentBtn.setText("Equipos dañados");
+        damagedEquipmentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                damagedEquipmentBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
         menuPanel.setLayout(menuPanelLayout);
@@ -272,16 +357,87 @@ public class GeneratedReportPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1585, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1597, Short.MAX_VALUE)
+            .addComponent(contentPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void mostFrequentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostFrequentBtnActionPerformed
         paintPanel(mostFrequent);
     }//GEN-LAST:event_mostFrequentBtnActionPerformed
+
+    private void higherExpenseBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_higherExpenseBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_higherExpenseBtnActionPerformed
+
+    private void greaterAssistenceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greaterAssistenceBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_greaterAssistenceBtnActionPerformed
+
+    private void mostClientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostClientsBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostClientsBtnActionPerformed
+
+    private void moreRoutinesCreatedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreRoutinesCreatedBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_moreRoutinesCreatedBtnActionPerformed
+
+    private void sameTimeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sameTimeBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sameTimeBtnActionPerformed
+
+    private void moreAdditionalServicesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreAdditionalServicesBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_moreAdditionalServicesBtnActionPerformed
+
+    private void moreIncomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreIncomeBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_moreIncomeBtnActionPerformed
+
+    private void GreaterAssistanceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GreaterAssistanceBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GreaterAssistanceBtnActionPerformed
+
+    private void bestSellingBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bestSellingBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bestSellingBtnActionPerformed
+
+    private void membershipIncomeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_membershipIncomeBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_membershipIncomeBtnActionPerformed
+
+    private void paymentsDatesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentsDatesBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paymentsDatesBtnActionPerformed
+
+    private void membershipsClientsBtnclieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_membershipsClientsBtnclieActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_membershipsClientsBtnclieActionPerformed
+
+    private void mostUsedEquipmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostUsedEquipmentBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostUsedEquipmentBtnActionPerformed
+
+    private void greaterOverlapRoutinesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_greaterOverlapRoutinesBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_greaterOverlapRoutinesBtnActionPerformed
+
+    /**
+     * Muestra el panel que mostrará el reporte de máquinas por
+     * sucursal.
+     * @param evt captura los eventos del teclado o mouse.
+     */
+    private void availablePerBranchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_availablePerBranchBtnActionPerformed
+        paintPanel(equipmentBranchPanel);
+    }//GEN-LAST:event_availablePerBranchBtnActionPerformed
+
+    private void damagedEquipmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_damagedEquipmentBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_damagedEquipmentBtnActionPerformed
+
+    private void mostUsedBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostUsedBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mostUsedBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
