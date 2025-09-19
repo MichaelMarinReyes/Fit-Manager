@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.UUID;
 
 public class TrainerDAO {
@@ -26,7 +27,6 @@ public class TrainerDAO {
                     trainer.setId(resultSet.getObject("employee_id", UUID.class));
                     trainer.setUserName(resultSet.getString("employee_name"));
                     trainer.setPhoneNumber(resultSet.getString("contact_phone"));
-                    // Si tienes otros atributos en Trainer, setéalos aquí
                 }
             }
 
@@ -35,5 +35,28 @@ public class TrainerDAO {
         }
 
         return trainer;
+    }
+
+    public ArrayList<Trainer> getAllTrainers() {
+        String query = "SELECT employee_id, employee_name FROM employee WHERE role_id = 'f295b6c8-ff08-4d4b-a065-38507b62e8f9';";
+        Trainer trainer = null;
+        ArrayList<Trainer> trainers = new ArrayList<>();
+
+        try (Connection connection = DBConnection.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                trainer = new Trainer();
+                trainer.setId(resultSet.getObject("employee_id",  UUID.class));
+                trainer.setUserName(resultSet.getString("employee_name"));
+                trainers.add(trainer);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return trainers;
     }
 }

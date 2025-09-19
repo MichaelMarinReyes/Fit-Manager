@@ -7,7 +7,6 @@ import frontend.admin.NewEmployeePanel;
 import frontend.inventorymanager.SendEquipmentPanel;
 import frontend.inventorymanager.RegisterEquipmentPanel;
 import frontend.inventorymanager.ReportEquipmentPanel;
-import frontend.inventorymanager.RequestEquipmentPanel;
 import frontend.receptionist.AssistanceClientPanel;
 import frontend.receptionist.ClientHistoryPanel;
 import frontend.receptionist.ClientListPanel;
@@ -36,6 +35,14 @@ public class MainWindow extends javax.swing.JFrame {
     private final SendEquipmentPanel sendEquipmentPanel = new SendEquipmentPanel();
     private final NewClientPanel receptionistPanel = new NewClientPanel();
     private final AssingClientPanel assingClientPanel = new AssingClientPanel();
+    private final NewClientPanel clientPanel = new NewClientPanel();
+    private final ClientListPanel clientListPanel = new ClientListPanel();
+    private final ClientHistoryPanel historyPanel = new ClientHistoryPanel();
+    private final RegisterEquipmentPanel registerEquipmentPanel = new RegisterEquipmentPanel();
+    private final ReportEquipmentPanel equipmentPanel = new ReportEquipmentPanel();
+    private final RoutineAttendancePanel attendancePanel = new RoutineAttendancePanel();
+    private final NewEmployeePanel employeePanel = new NewEmployeePanel();
+    private final AssistanceClientPanel assistanceClientPanel = new AssistanceClientPanel();
 
     /**
      * Creates new form MainWindow
@@ -67,15 +74,15 @@ public class MainWindow extends javax.swing.JFrame {
         viewClientsBtn = new javax.swing.JButton();
         clientsHistoryBtn = new javax.swing.JButton();
         membershipsBtn = new javax.swing.JButton();
-        registerEquipment = new javax.swing.JButton();
+        registerEquipmentBtn = new javax.swing.JButton();
         requestEquipmentBtn = new javax.swing.JButton();
         sendEquipmentBtn = new javax.swing.JButton();
         reportEquipmentBtn = new javax.swing.JButton();
-        assingClient = new javax.swing.JButton();
-        routinesAttendanceBtn = new javax.swing.JButton();
+        assingClientBtn = new javax.swing.JButton();
+        routinesBtn = new javax.swing.JButton();
         reportsBtn = new javax.swing.JButton();
         newEmployeeBtn = new javax.swing.JButton();
-        assistanceClient = new javax.swing.JButton();
+        assistanceClientBtn = new javax.swing.JButton();
         newRoutine = new javax.swing.JButton();
         contentPane = new javax.swing.JPanel();
 
@@ -149,10 +156,10 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
         menuBar.add(membershipsBtn, gridBagConstraints);
 
-        registerEquipment.setText("Registrar Equipo");
-        registerEquipment.addActionListener(new java.awt.event.ActionListener() {
+        registerEquipmentBtn.setText("Registrar Equipo");
+        registerEquipmentBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerEquipmentActionPerformed(evt);
+                registerEquipmentBtnActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -160,7 +167,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
-        menuBar.add(registerEquipment, gridBagConstraints);
+        menuBar.add(registerEquipmentBtn, gridBagConstraints);
 
         requestEquipmentBtn.setText("Solicitar Equipo");
         requestEquipmentBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -201,10 +208,10 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
         menuBar.add(reportEquipmentBtn, gridBagConstraints);
 
-        assingClient.setText("Asignar Cliente");
-        assingClient.addActionListener(new java.awt.event.ActionListener() {
+        assingClientBtn.setText("Asignar Cliente");
+        assingClientBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assingClientActionPerformed(evt);
+                assingClientBtnActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -212,12 +219,12 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
-        menuBar.add(assingClient, gridBagConstraints);
+        menuBar.add(assingClientBtn, gridBagConstraints);
 
-        routinesAttendanceBtn.setText("Rutinas");
-        routinesAttendanceBtn.addActionListener(new java.awt.event.ActionListener() {
+        routinesBtn.setText("Rutinas");
+        routinesBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                routinesAttendanceBtnActionPerformed(evt);
+                routinesBtnActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -225,7 +232,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
-        menuBar.add(routinesAttendanceBtn, gridBagConstraints);
+        menuBar.add(routinesBtn, gridBagConstraints);
 
         reportsBtn.setText("Reportes");
         reportsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -253,10 +260,10 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
         menuBar.add(newEmployeeBtn, gridBagConstraints);
 
-        assistanceClient.setText("Asistencias");
-        assistanceClient.addActionListener(new java.awt.event.ActionListener() {
+        assistanceClientBtn.setText("Asistencias");
+        assistanceClientBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assistanceClientActionPerformed(evt);
+                assistanceClientBtnActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -264,7 +271,7 @@ public class MainWindow extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(20, 8, 20, 8);
-        menuBar.add(assistanceClient, gridBagConstraints);
+        menuBar.add(assistanceClientBtn, gridBagConstraints);
 
         newRoutine.setText("Crear Rutina");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -308,32 +315,26 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutBtnActionPerformed
 
     private void newClientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClientBtnActionPerformed
-        NewClientPanel clientPanel = new NewClientPanel();
-        paintPanel(clientPanel);
+       paintPanel(clientPanel);
     }//GEN-LAST:event_newClientBtnActionPerformed
 
     private void viewClientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewClientsBtnActionPerformed
-        ClientListPanel clientListPanel = new ClientListPanel();
         paintPanel(clientListPanel);
     }//GEN-LAST:event_viewClientsBtnActionPerformed
 
     private void clientsHistoryBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clientsHistoryBtnActionPerformed
-        ClientHistoryPanel historyPanel = new ClientHistoryPanel();
         paintPanel(historyPanel);
     }//GEN-LAST:event_clientsHistoryBtnActionPerformed
 
     private void membershipsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_membershipsBtnActionPerformed
-        ClientHistoryPanel historyPanel = new ClientHistoryPanel();
         paintPanel(historyPanel);
     }//GEN-LAST:event_membershipsBtnActionPerformed
 
-    private void registerEquipmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerEquipmentActionPerformed
-        RegisterEquipmentPanel registerEquipmentPanel = new RegisterEquipmentPanel();
-        paintPanel(registerEquipmentPanel);
-    }//GEN-LAST:event_registerEquipmentActionPerformed
+    private void registerEquipmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerEquipmentBtnActionPerformed
+       paintPanel(registerEquipmentPanel);
+    }//GEN-LAST:event_registerEquipmentBtnActionPerformed
 
     private void requestEquipmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestEquipmentBtnActionPerformed
-        RequestEquipmentPanel equipmentPanel = new RequestEquipmentPanel();
         paintPanel(equipmentPanel);
     }//GEN-LAST:event_requestEquipmentBtnActionPerformed
 
@@ -342,37 +343,33 @@ public class MainWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_sendEquipmentBtnActionPerformed
 
     private void reportEquipmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportEquipmentBtnActionPerformed
-        ReportEquipmentPanel equipmentPanel = new ReportEquipmentPanel();
         paintPanel(equipmentPanel);
     }//GEN-LAST:event_reportEquipmentBtnActionPerformed
 
-    private void assingClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assingClientActionPerformed
+    private void assingClientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assingClientBtnActionPerformed
         paintPanel(assingClientPanel);
-    }//GEN-LAST:event_assingClientActionPerformed
+    }//GEN-LAST:event_assingClientBtnActionPerformed
 
-    private void routinesAttendanceBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_routinesAttendanceBtnActionPerformed
-        RoutineAttendancePanel attendancePanel = new RoutineAttendancePanel();
+    private void routinesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_routinesBtnActionPerformed
         paintPanel(attendancePanel);
-    }//GEN-LAST:event_routinesAttendanceBtnActionPerformed
+    }//GEN-LAST:event_routinesBtnActionPerformed
 
     private void reportsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportsBtnActionPerformed
         paintPanel(generatedReportPanel);
     }//GEN-LAST:event_reportsBtnActionPerformed
 
     private void newEmployeeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newEmployeeBtnActionPerformed
-        NewEmployeePanel employeePanel = new NewEmployeePanel();
         paintPanel(employeePanel);
     }//GEN-LAST:event_newEmployeeBtnActionPerformed
 
-    private void assistanceClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assistanceClientActionPerformed
-        AssistanceClientPanel assistanceClientPanel = new AssistanceClientPanel();
+    private void assistanceClientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assistanceClientBtnActionPerformed
         paintPanel(assistanceClientPanel);
-    }//GEN-LAST:event_assistanceClientActionPerformed
+    }//GEN-LAST:event_assistanceClientBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assingClient;
-    private javax.swing.JButton assistanceClient;
+    private javax.swing.JButton assingClientBtn;
+    private javax.swing.JButton assistanceClientBtn;
     private javax.swing.JButton clientsHistoryBtn;
     private javax.swing.JPanel contentPane;
     private javax.swing.JButton logoutBtn;
@@ -381,11 +378,11 @@ public class MainWindow extends javax.swing.JFrame {
     private javax.swing.JButton newClientBtn;
     private javax.swing.JButton newEmployeeBtn;
     private javax.swing.JButton newRoutine;
-    private javax.swing.JButton registerEquipment;
+    private javax.swing.JButton registerEquipmentBtn;
     private javax.swing.JButton reportEquipmentBtn;
     private javax.swing.JButton reportsBtn;
     private javax.swing.JButton requestEquipmentBtn;
-    private javax.swing.JButton routinesAttendanceBtn;
+    private javax.swing.JButton routinesBtn;
     private javax.swing.JButton sendEquipmentBtn;
     private javax.swing.JButton viewClientsBtn;
     // End of variables declaration//GEN-END:variables
@@ -431,15 +428,16 @@ public class MainWindow extends javax.swing.JFrame {
         this.viewClientsBtn.setVisible(false);
         this.clientsHistoryBtn.setVisible(false);
         this.membershipsBtn.setVisible(false);
-        this.assistanceClient.setVisible(false);
+        this.assistanceClientBtn.setVisible(false);
         // Acciones de inventario
-        this.registerEquipment.setVisible(false);
+        this.registerEquipmentBtn.setVisible(false);
         this.requestEquipmentBtn.setVisible(false);
         this.sendEquipmentBtn.setVisible(false);
         this.reportEquipmentBtn.setVisible(false);
         // Acciones del entrenador
-        this.assingClient.setVisible(false);
-        this.routinesAttendanceBtn.setVisible(false);
+        this.assingClientBtn.setVisible(false);
+        this.routinesBtn.setVisible(false);
+        this.newRoutine.setVisible(false);
         //Acciones del administrador
         this.reportsBtn.setVisible(true);
         this.newEmployeeBtn.setVisible(true);
@@ -451,15 +449,16 @@ public class MainWindow extends javax.swing.JFrame {
         this.viewClientsBtn.setVisible(false);
         this.clientsHistoryBtn.setVisible(false);
         this.membershipsBtn.setVisible(false);
-        this.assistanceClient.setVisible(false);
+        this.assistanceClientBtn.setVisible(false);
         // Acciones de inventario
-        this.registerEquipment.setVisible(true);
+        this.registerEquipmentBtn.setVisible(true);
         this.requestEquipmentBtn.setVisible(true);
         this.sendEquipmentBtn.setVisible(true);
         this.reportEquipmentBtn.setVisible(true);
         // Acciones del entrenador
-        this.assingClient.setVisible(false);
-        this.routinesAttendanceBtn.setVisible(false);
+        this.assingClientBtn.setVisible(false);
+        this.routinesBtn.setVisible(false);
+        this.newRoutine.setVisible(false);
         //Acciones del administrador
         this.reportsBtn.setVisible(false);
         this.newEmployeeBtn.setVisible(false);
@@ -471,15 +470,16 @@ public class MainWindow extends javax.swing.JFrame {
         this.viewClientsBtn.setVisible(false);
         this.clientsHistoryBtn.setVisible(false);
         this.membershipsBtn.setVisible(false);
-        this.assistanceClient.setVisible(false);
+        this.assistanceClientBtn.setVisible(false);
         // Acciones de inventario
-        this.registerEquipment.setVisible(false);
+        this.registerEquipmentBtn.setVisible(false);
         this.requestEquipmentBtn.setVisible(false);
         this.sendEquipmentBtn.setVisible(false);
         this.reportEquipmentBtn.setVisible(false);
         // Acciones del entrenador
-        this.assingClient.setVisible(true);
-        this.routinesAttendanceBtn.setVisible(true);
+        this.assingClientBtn.setVisible(true);
+        this.routinesBtn.setVisible(true);
+        this.newRoutine.setVisible(true);
         //Acciones del administrador
         this.reportsBtn.setVisible(false);
         this.newEmployeeBtn.setVisible(false);
@@ -491,29 +491,28 @@ public class MainWindow extends javax.swing.JFrame {
         this.viewClientsBtn.setVisible(true);
         this.clientsHistoryBtn.setVisible(true);
         this.membershipsBtn.setVisible(true);
-        this.assistanceClient.setVisible(false);
+        this.assistanceClientBtn.setVisible(true);
         // Acciones de inventario
-        this.registerEquipment.setVisible(false);
+        this.registerEquipmentBtn.setVisible(false);
         this.requestEquipmentBtn.setVisible(false);
         this.sendEquipmentBtn.setVisible(false);
         this.reportEquipmentBtn.setVisible(false);
         // Acciones del entrenador
-        this.assingClient.setVisible(false);
-        this.routinesAttendanceBtn.setVisible(false);
+        this.assingClientBtn.setVisible(false);
+        this.routinesBtn.setVisible(false);
+        this.newRoutine.setVisible(false);
         //Acciones del administrador
         this.reportsBtn.setVisible(false);
         this.newEmployeeBtn.setVisible(false);
     }
 
     private void styleMenuBarFlatLaf() {
-        // Fondo del menú
         menuBar.putClientProperty(FlatClientProperties.STYLE, "background: " + ColorApp.GREEN + ";");
 
-        // Estilo común para todos los botones del menú
         JButton[] buttons = {
-            newClientBtn, viewClientsBtn, clientsHistoryBtn, membershipsBtn,
-            registerEquipment, requestEquipmentBtn, sendEquipmentBtn, reportEquipmentBtn,
-            assingClient, routinesAttendanceBtn, reportsBtn, newEmployeeBtn, newRoutine, logoutBtn
+            newClientBtn, viewClientsBtn, assistanceClientBtn, clientsHistoryBtn, membershipsBtn,
+            registerEquipmentBtn, requestEquipmentBtn, sendEquipmentBtn, reportEquipmentBtn,
+            assingClientBtn, routinesBtn, reportsBtn, newEmployeeBtn, newRoutine, logoutBtn
         };
 
         for (JButton button : buttons) {

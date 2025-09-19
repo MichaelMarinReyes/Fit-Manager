@@ -4,6 +4,7 @@ import backend.services.LoginService;
 import backend.util.ColorApp;
 import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -23,17 +24,35 @@ public class LoginPanel extends javax.swing.JPanel {
         initComponents();
         styleComponents();
         this.validLogin = false;
-        this.setRolComboBox();
+        this.fillRolComboBox();
     }
 
+    /**
+     * Sirve para validar que las credenciales ingresadas son válidas.
+     *
+     * @return true o false si las credenciales ingresadas fueron correctas o
+     * incorrectas.
+     */
     public boolean isValidLogin() {
         return validLogin;
     }
 
+    /**
+     * Sirve para obtener el texto del index seleccionado en el JComboBox.
+     *
+     * @return el texto del index seleccionado.
+     */
     public String getRol() {
         return rolUserCombobox.getSelectedItem().toString();
     }
 
+    /**
+     * Cambia el atributo de true a false o viceversa según las credenciales
+     * ingresadas.
+     *
+     * @param validLogin es un parámetro de tipo boolean que representa si las
+     * credenciales ingresadas y el rol seleccionado es correcto o incorrecto.
+     */
     public void setValidLogin(boolean validLogin) {
         boolean old = this.validLogin;
         this.validLogin = validLogin;
@@ -99,6 +118,11 @@ public class LoginPanel extends javax.swing.JPanel {
         add(jLabel3, gridBagConstraints);
 
         userIdTextField.setMaximumSize(new java.awt.Dimension(200, 2147483647));
+        userIdTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userIdTextFieldKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
@@ -109,6 +133,11 @@ public class LoginPanel extends javax.swing.JPanel {
         add(userIdTextField, gridBagConstraints);
 
         passwordField.setMaximumSize(new java.awt.Dimension(200, 2147483647));
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -145,6 +174,11 @@ public class LoginPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(39, 78, 0, 0);
         add(jLabel4, gridBagConstraints);
 
+        rolUserCombobox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                rolUserComboboxKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -155,6 +189,13 @@ public class LoginPanel extends javax.swing.JPanel {
         add(rolUserCombobox, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Sirve para capturar los valores d elos campos de userIdTextField,
+     * passwordField y rolUserCombobox, valida que las credenciales correspondan
+     * con los datos de la base de datos.
+     *
+     * @param evt sirve para darle un evento al botón.
+     */
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         String username = userIdTextField.getText();
         char[] pass = passwordField.getPassword();
@@ -165,16 +206,17 @@ public class LoginPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Hay campos vacíos, llénelos por favor", "Campos necesarios", JOptionPane.INFORMATION_MESSAGE);
             loginBtn.setForeground(Color.red);
             setValidLogin(false);
+            userIdTextField.requestFocus();
             return;
         }
 
         if (rolUserCombobox.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Debe escoger el tipo de empleado", "Tipo de empleado", JOptionPane.INFORMATION_MESSAGE);
+            rolUserCombobox.requestFocus();
             return;
         }
 
         if (loginService.login(username, password, rol)) {
-
             setValidLogin(true);
             validLogin = true;
         } else {
@@ -186,6 +228,42 @@ public class LoginPanel extends javax.swing.JPanel {
         passwordField.setText("");
         rolUserCombobox.setSelectedIndex(0);
     }//GEN-LAST:event_loginBtnActionPerformed
+
+    /**
+     * Modifica el focus al presionar Enter y manda el focus al campo del
+     * passwordField
+     *
+     * @param evt captura el evento, en este caso al presionar la tecla Enter.
+     */
+    private void userIdTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userIdTextFieldKeyPressed
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            passwordField.requestFocus();
+        }
+    }//GEN-LAST:event_userIdTextFieldKeyPressed
+
+    /**
+     * Cambia el focus al presionar Enter y manda el focus al campo del
+     * rolUserCombobox.
+     *
+     * @param evt captura el evento, en este caso al presionar la tecla Enter.
+     */
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            rolUserCombobox.requestFocus();
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
+
+    /**
+     * Modifica el focus al presioanr Enter y manda el focus al botón de
+     * loginBtn.
+     *
+     * @param evt captura el evento, en este caso al presionar la tecla Enter.
+     */
+    private void rolUserComboboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rolUserComboboxKeyPressed
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            loginBtn.requestFocus();
+        }
+    }//GEN-LAST:event_rolUserComboboxKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -199,7 +277,11 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JTextField userIdTextField;
     // End of variables declaration//GEN-END:variables
 
-    private void setRolComboBox() {
+    /**
+     * Sirve para llenar el JComboBox con los roles existentes en el sistema.
+     * Estos roles representan los tipos de empleados.
+     */
+    private void fillRolComboBox() {
         rolUserCombobox.removeAllItems();
         ArrayList<String> roles = loginService.getRoles();
 
@@ -213,7 +295,8 @@ public class LoginPanel extends javax.swing.JPanel {
     }
 
     /**
-     * Sirve para dar formato de colores y diseño a los componentes
+     * Sirve para dar formato de colores y diseño a los componentes del
+     * formulario.
      */
     private void styleComponents() {
         userIdTextField.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Usuario");

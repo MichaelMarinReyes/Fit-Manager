@@ -141,6 +141,21 @@ CREATE TABLE exercise_machine_assignment (
         REFERENCES exercise_machine(machine_id) ON DELETE CASCADE
 );
 
+CREATE TABLE machine_location (
+    location_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    location_type VARCHAR(20) NOT NULL CHECK (location_type IN ('BRANCH','WAREHOUSE')),
+    branch_id UUID NULL,
+    warehouse_id UUID NULL,
+    CONSTRAINT fk_location_branch FOREIGN KEY (branch_id)
+        REFERENCES gym_branch(branch_id) ON DELETE CASCADE,
+    CONSTRAINT fk_location_warehouse FOREIGN KEY (warehouse_id)
+        REFERENCES storage_warehouse(warehouse_id) ON DELETE CASCADE,
+    CONSTRAINT chk_valid_location CHECK (
+        (branch_id IS NOT NULL AND warehouse_id IS NULL) OR
+        (branch_id IS NULL AND warehouse_id IS NOT NULL)
+    )
+);
+
 -- Relación muchos a muchos: Cliente - Servicio
 CREATE TABLE client_service (
     client_id UUID NOT NULL,

@@ -1,7 +1,11 @@
 package frontend.receptionist;
 
+import backend.models.users.Trainer;
+import backend.services.TrainerService;
 import backend.util.ColorApp;
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -10,12 +14,15 @@ import javax.swing.JOptionPane;
  */
 public class NewClientPanel extends javax.swing.JPanel {
 
+    private TrainerService trainerService = new TrainerService();
+
     /**
      * Creates new form ReceptionistPanel
      */
     public NewClientPanel() {
         initComponents();
         this.styleComponents();
+        this.fillTrainersComboBox();
     }
 
     /**
@@ -29,11 +36,11 @@ public class NewClientPanel extends javax.swing.JPanel {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        phoneLabel = new javax.swing.JLabel();
+        emergencyLabel = new javax.swing.JLabel();
+        trainerLabel = new javax.swing.JLabel();
         addClientBtn = new javax.swing.JButton();
         nameClientTextField = new javax.swing.JTextField();
         addressClientField = new javax.swing.JTextField();
@@ -52,13 +59,13 @@ public class NewClientPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(40, 225, 0, 0);
         add(jLabel1, gridBagConstraints);
 
-        jLabel2.setText("Nombre:");
+        nameLabel.setText("Nombre:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(64, 125, 0, 0);
-        add(jLabel2, gridBagConstraints);
+        add(nameLabel, gridBagConstraints);
 
         jLabel3.setText("Dirección");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -68,29 +75,29 @@ public class NewClientPanel extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(28, 125, 0, 0);
         add(jLabel3, gridBagConstraints);
 
-        jLabel4.setText("Teléfono");
+        phoneLabel.setText("Teléfono");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(28, 125, 0, 0);
-        add(jLabel4, gridBagConstraints);
+        add(phoneLabel, gridBagConstraints);
 
-        jLabel5.setText("Teléfono de emergencia");
+        emergencyLabel.setText("Teléfono de emergencia");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(18, 40, 0, 0);
-        add(jLabel5, gridBagConstraints);
+        add(emergencyLabel, gridBagConstraints);
 
-        jLabel6.setText("Asignar Entrenador");
+        trainerLabel.setText("Asignar Entrenador");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(38, 67, 0, 0);
-        add(jLabel6, gridBagConstraints);
+        add(trainerLabel, gridBagConstraints);
 
         addClientBtn.setText("Registrar Cliente");
         addClientBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +112,12 @@ public class NewClientPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(24, 200, 206, 0);
         add(addClientBtn, gridBagConstraints);
+
+        nameClientTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                nameClientTextFieldKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
@@ -112,6 +125,12 @@ public class NewClientPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(57, 60, 0, 0);
         add(nameClientTextField, gridBagConstraints);
+
+        addressClientField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                addressClientFieldKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -119,6 +138,12 @@ public class NewClientPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(21, 60, 0, 0);
         add(addressClientField, gridBagConstraints);
+
+        phoneNumberField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                phoneNumberFieldKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
@@ -126,6 +151,12 @@ public class NewClientPanel extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(21, 60, 0, 0);
         add(phoneNumberField, gridBagConstraints);
+
+        phoneEmergencyField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                phoneEmergencyFieldKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 7;
@@ -135,43 +166,110 @@ public class NewClientPanel extends javax.swing.JPanel {
         add(phoneEmergencyField, gridBagConstraints);
 
         trainersListComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        trainersListComboBox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                trainersListComboBoxKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 9;
-        gridBagConstraints.ipadx = 188;
+        gridBagConstraints.ipadx = 120;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(31, 60, 0, 0);
         add(trainersListComboBox, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Hace llamado al método para realizar el proceso de registro.
+     *
+     * @param evt captura eventos ya sea del teclado o del mouse.
+     */
     private void addClientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClientBtnActionPerformed
         this.validRegister();
     }//GEN-LAST:event_addClientBtnActionPerformed
 
+    /**
+     * Cambia el focus al campo de addressclientField.
+     *
+     * @param evt detecta el evento de presionar Enter.
+     */
+    private void nameClientTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nameClientTextFieldKeyPressed
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            addressClientField.requestFocus();
+        }
+    }//GEN-LAST:event_nameClientTextFieldKeyPressed
+
+    /**
+     * Cambia el focus al campo de phoneNumberField.
+     *
+     * @param evt detecta el evento de presionar Enter.
+     */
+    private void addressClientFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_addressClientFieldKeyPressed
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            phoneNumberField.requestFocus();
+        }
+    }//GEN-LAST:event_addressClientFieldKeyPressed
+
+    /**
+     * Cambia el focus al campo de phoneEmergencyField.
+     *
+     * @param evt detecta el evento de presioner Enter.
+     */
+    private void phoneNumberFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneNumberFieldKeyPressed
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            phoneEmergencyField.requestFocus();
+        }
+    }//GEN-LAST:event_phoneNumberFieldKeyPressed
+
+    /**
+     * Cambia el focus al campo de trainersListCombobox.
+     *
+     * @param evt detecta el evento de presionar Enter.
+     */
+    private void phoneEmergencyFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_phoneEmergencyFieldKeyPressed
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            trainersListComboBox.requestFocus();
+        }
+    }//GEN-LAST:event_phoneEmergencyFieldKeyPressed
+
+    /**
+     * Cambia el focus al botón de addClientBtn.
+     *
+     * @param evt detecta el evento de presionar Enter.
+     */
+    private void trainersListComboBoxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_trainersListComboBoxKeyPressed
+        if (evt.getExtendedKeyCode() == KeyEvent.VK_ENTER) {
+            addClientBtn.requestFocus();
+        }
+    }//GEN-LAST:event_trainersListComboBoxKeyPressed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addClientBtn;
     private javax.swing.JTextField addressClientField;
+    private javax.swing.JLabel emergencyLabel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField nameClientTextField;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JTextField phoneEmergencyField;
+    private javax.swing.JLabel phoneLabel;
     private javax.swing.JTextField phoneNumberField;
+    private javax.swing.JLabel trainerLabel;
     private javax.swing.JComboBox<String> trainersListComboBox;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * Modifica el estilo de los componentes de esta clase.
+     */
     private void styleComponents() {
         jLabel1.putClientProperty("FlatLaf.style", "font: bold +18; foreground: " + ColorApp.GREEN + ";");
 
-        jLabel2.putClientProperty("FlatLaf.style", "font: 14; foreground: #333333;");
-        jLabel3.putClientProperty("FlatLaf.style", "font: 14; foreground: #333333;");
-        jLabel4.putClientProperty("FlatLaf.style", "font: 14; foreground: #333333;");
-        jLabel5.putClientProperty("FlatLaf.style", "font: 14; foreground: #333333;");
-        jLabel6.putClientProperty("FlatLaf.style", "font: 14; foreground: #333333;");
+        nameLabel.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
+        jLabel3.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
+        phoneLabel.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
+        emergencyLabel.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
+        trainerLabel.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
 
         nameClientTextField.putClientProperty("JTextField.placeholderText", "Ingrese el nombre");
         nameClientTextField.putClientProperty("FlatLaf.style", "arc: 15; focusColor: " + ColorApp.GREEN + "; font: 14;");
@@ -199,18 +297,46 @@ public class NewClientPanel extends javax.swing.JPanel {
         );
     }
 
+    /**
+     * Valida los campos para registrar un nuevo usuario.
+     */
     private void validRegister() {
+        nameLabel.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
+        jLabel3.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
+        phoneLabel.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
+        emergencyLabel.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
+        trainerLabel.putClientProperty("FlatLaf.style", "font: 14; foreground: " + ColorApp.GREEN + ";");
         boolean validTxt = nameClientTextField.getText().isEmpty() && addressClientField.getText().isEmpty() && phoneNumberField.getText().isEmpty();
         boolean validTxtOp = nameClientTextField.getText().isEmpty() || addressClientField.getText().isEmpty() || phoneNumberField.getText().isEmpty();
         boolean trainerSelected = trainersListComboBox.getSelectedIndex() == 0;
 
         if (validTxt || trainerSelected || validTxtOp) {
             if (validTxt) {
+                nameLabel.setForeground(Color.red);
+                phoneLabel.setForeground(Color.red);
+                emergencyLabel.setForeground(Color.red);
                 JOptionPane.showMessageDialog(this, "Los campos \"Nombre\", \"Teléfono\", \"Teléfono de emergencia\" son datos obligatorios", "Campos vacíos", JOptionPane.INFORMATION_MESSAGE);
                 addClientBtn.setBackground(Color.red);
             } else if (trainerSelected) {
+                trainerLabel.setForeground(Color.red);
                 JOptionPane.showMessageDialog(this, "Debe de asignar un entrenador", "Campos vacíos", JOptionPane.INFORMATION_MESSAGE);
                 addClientBtn.setBackground(Color.red);
+            }
+        }
+    }
+
+    /**
+     * LLena el JComboBox con los entrenadores que existen en la base de datos.
+     */
+    private void fillTrainersComboBox() {
+        trainersListComboBox.removeAllItems();
+        ArrayList<Trainer> trainers = trainerService.getTrainers();
+
+        trainersListComboBox.addItem("Entrenadores");
+
+        if (!trainers.isEmpty()) {
+            for (Trainer trainer : trainers) {
+                trainersListComboBox.addItem(trainer.getUserName());
             }
         }
     }
