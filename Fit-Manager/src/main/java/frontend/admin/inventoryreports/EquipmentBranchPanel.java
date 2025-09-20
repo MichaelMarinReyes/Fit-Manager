@@ -5,10 +5,13 @@ import backend.models.gym.Equipment;
 import backend.services.BranchService;
 import backend.services.EquipmentService;
 import backend.util.ColorApp;
+import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -30,9 +33,10 @@ public class EquipmentBranchPanel extends javax.swing.JPanel {
      */
     public EquipmentBranchPanel() {
         initComponents();
-        this.styleTable();
+        this.styleComponents();
         this.fillGymBranch();
         this.fillTable();
+        this.moreInfo();
         gymBranchCombobox.addActionListener(e -> this.filterTableByBranch());
     }
 
@@ -50,6 +54,7 @@ public class EquipmentBranchPanel extends javax.swing.JPanel {
         clientsTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         gymBranchCombobox = new javax.swing.JComboBox<>();
+        updateTableBtn = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -74,7 +79,7 @@ public class EquipmentBranchPanel extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 889;
         gridBagConstraints.ipady = 345;
@@ -89,7 +94,7 @@ public class EquipmentBranchPanel extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(3, 250, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 300, 0, 0);
         add(jLabel1, gridBagConstraints);
 
         gymBranchCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -98,9 +103,30 @@ public class EquipmentBranchPanel extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 83;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(20, 8, 10, 0);
         add(gymBranchCombobox, gridBagConstraints);
+
+        updateTableBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updateList.png"))); // NOI18N
+        updateTableBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateTableBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(5, 40, 5, 10);
+        add(updateTableBtn, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateTableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTableBtnActionPerformed
+        this.fillTable();
+        this.styleComponents();
+        this.gymBranchCombobox.setSelectedIndex(0);
+    }//GEN-LAST:event_updateTableBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -108,12 +134,13 @@ public class EquipmentBranchPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> gymBranchCombobox;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton updateTableBtn;
     // End of variables declaration//GEN-END:variables
 
     /**
-     * Da formato a la tabla de listado de clientes.
+     * Da estilo a los componentes de esta clase.
      */
-    private void styleTable() {
+    private void styleComponents() {
         jLabel1.putClientProperty("FlatLaf.style", "font: bold +14; foreground: " + ColorApp.GREEN + ";");
 
         gymBranchCombobox.putClientProperty("FlatLaf.style",
@@ -122,12 +149,27 @@ public class EquipmentBranchPanel extends javax.swing.JPanel {
                 + "foreground: " + ColorApp.GREEN_DARK + ";");
         gymBranchCombobox.setPreferredSize(new Dimension(150, 30));
 
+        updateTableBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, "roundRect");
+        updateTableBtn.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 15;"
+                + "font: bold +12;"
+                + "background: " + ColorApp.GREEN + ";"
+                + "foreground: " + ColorApp.WHITE + ";"
+                + "hoverBackground: " + ColorApp.GREEN_DARK + ";"
+                + "pressedBackground: " + ColorApp.GREEN_DARKED + ";");
+        updateTableBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+        updateTableBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
+        updateTableBtn.setToolTipText("Actualizar listado");
+
         clientsTable.setRowHeight(30);
         clientsTable.setGridColor(Color.GREEN);
         clientsTable.setShowGrid(true);
         clientsTable.setFillsViewportHeight(true);
         clientsTable.setAutoCreateRowSorter(true);
         clientsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        clientsTable.getColumnModel().getColumn(4).setPreferredWidth(200);
+        clientsTable.getColumnModel().getColumn(4).setMaxWidth(300);
+        clientsTable.getColumnModel().getColumn(4).setMinWidth(150);
 
         DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
         centerRenderer.setHorizontalAlignment(SwingConstants.CENTER);
@@ -192,7 +234,7 @@ public class EquipmentBranchPanel extends javax.swing.JPanel {
             }
 
         }
-        this.styleTable();
+        this.styleComponents();
     }
 
     /**
@@ -247,7 +289,47 @@ public class EquipmentBranchPanel extends javax.swing.JPanel {
             dataModel.setValueAt(equipment.getLocation(), i, 5);
         }
 
-        this.styleTable();
+        this.styleComponents();
     }
 
+    /**
+     * Muestra un tipo pop up mostrando la descripción de una casilla
+     * seleccionada de un equipo.
+     */
+    private void moreInfo() {
+        clientsTable.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            @Override
+            public void mouseMoved(MouseEvent e) {
+                int row = clientsTable.rowAtPoint(e.getPoint());
+                int col = clientsTable.columnAtPoint(e.getPoint());
+                if (row > -1 && col > -1) {
+                    clientsTable.setToolTipText("Doble click para más información");
+                } else {
+                    clientsTable.setToolTipText(null);
+                }
+            }
+        });
+
+        clientsTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 2) {
+                    int row = clientsTable.rowAtPoint(e.getPoint());
+                    int col = clientsTable.columnAtPoint(e.getPoint());
+
+                    if (row > -1 && col > -1) {
+                        Object value = clientsTable.getValueAt(row, col);
+                        if (value != null) {
+                            JOptionPane.showMessageDialog(
+                                    null,
+                                    value.toString(),
+                                    "Detalles",
+                                    javax.swing.JOptionPane.INFORMATION_MESSAGE
+                            );
+                        }
+                    }
+                }
+            }
+        });
+    }
 }

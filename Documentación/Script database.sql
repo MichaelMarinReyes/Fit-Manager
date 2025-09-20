@@ -18,6 +18,12 @@ CREATE TABLE storage_warehouse (
 );
 
 -- Máquinas (pueden estar en una sucursal O en una bodega)
+CREATE TABLE machine_type (
+    type_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    type_name VARCHAR(50) NOT NULL,
+    description VARCHAR(200)
+);
+
 CREATE TABLE exercise_machine (
     machine_id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     machine_name VARCHAR(50) NOT NULL,

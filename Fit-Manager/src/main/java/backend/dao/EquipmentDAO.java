@@ -18,8 +18,12 @@ public class EquipmentDAO {
      */
     public ArrayList<Equipment> getEquipments() {
         ArrayList<Equipment> equipments = new ArrayList<>();
-        String query = "SELECT e.machine_id, e.machine_name, e.machine_status, e.description, gb.branch_name FROM exercise_machine e JOIN machine_location ml ON e.location_id = ml.location_id JOIN gym_branch gb ON ml.branch_id = gb.branch_id;";
-        Equipment equipment = null;
+        Equipment  equipment = null;
+        String query = "SELECT e.machine_id, mt.type_name AS machine_name, e.machine_status, mt.description, gb.branch_name " +
+                "FROM exercise_machine e " +
+                "JOIN machine_location ml ON e.location_id = ml.location_id " +
+                "JOIN gym_branch gb ON ml.branch_id = gb.branch_id " +
+                "JOIN machine_type mt ON e.type_id = mt.type_id;";
 
         try (Connection connection = DBConnection.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query);
@@ -37,7 +41,6 @@ public class EquipmentDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return equipments;
     }
 }

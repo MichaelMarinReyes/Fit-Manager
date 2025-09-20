@@ -3,6 +3,7 @@ package frontend.admin.clientsreports;
 import backend.models.users.Client;
 import backend.services.ClientService;
 import backend.util.ColorApp;
+import com.formdev.flatlaf.FlatClientProperties;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ListSelectionModel;
@@ -47,6 +48,7 @@ public class MostFrequent extends javax.swing.JPanel {
         clientsTable = new javax.swing.JTable();
         findClientField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        updateTableBtn = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -71,7 +73,7 @@ public class MostFrequent extends javax.swing.JPanel {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipadx = 889;
         gridBagConstraints.ipady = 399;
@@ -85,7 +87,7 @@ public class MostFrequent extends javax.swing.JPanel {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 378;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 36, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(16, 36, 10, 0);
         add(findClientField, gridBagConstraints);
 
         jLabel1.setText("Bucar cliente:");
@@ -93,9 +95,29 @@ public class MostFrequent extends javax.swing.JPanel {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(6, 225, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(12, 200, 10, 0);
         add(jLabel1, gridBagConstraints);
+
+        updateTableBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/updateList.png"))); // NOI18N
+        updateTableBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateTableBtnActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 12;
+        gridBagConstraints.ipady = 12;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(3, 40, 5, 10);
+        add(updateTableBtn, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void updateTableBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTableBtnActionPerformed
+        this.fillTable();
+        this.styleComponents();
+    }//GEN-LAST:event_updateTableBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -103,6 +125,7 @@ public class MostFrequent extends javax.swing.JPanel {
     private javax.swing.JTextField findClientField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton updateTableBtn;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -112,6 +135,19 @@ public class MostFrequent extends javax.swing.JPanel {
         jLabel1.putClientProperty("FlatLaf.style", "font: bold +14; foreground: " + ColorApp.GREEN + ";");
         findClientField.putClientProperty("JTextField.placeholderText", "Ingrese nombre del cliente, teléfono, UUID o membresía");
         findClientField.putClientProperty("FlatLaf.style", "arc: 15; focusColor: " + ColorApp.GREEN + "; font: 14;");
+
+        updateTableBtn.putClientProperty(FlatClientProperties.BUTTON_TYPE, "roundRect");
+        updateTableBtn.putClientProperty(FlatClientProperties.STYLE,
+                "arc: 15;"
+                + "font: bold +12;"
+                + "background: " + ColorApp.GREEN + ";"
+                + "foreground: " + ColorApp.WHITE + ";"
+                + "hoverBackground: " + ColorApp.GREEN_DARK + ";"
+                + "pressedBackground: " + ColorApp.GREEN_DARKED + ";");
+        updateTableBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+        updateTableBtn.setVerticalTextPosition(SwingConstants.BOTTOM);
+        updateTableBtn.setToolTipText("Actualizar listado");
+
         clientsTable.setRowHeight(30);
         clientsTable.setGridColor(Color.GREEN);
         clientsTable.setShowGrid(true);
